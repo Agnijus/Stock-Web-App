@@ -5,6 +5,7 @@ const TopBar = () => {
         <form action="">
           <input className="search-bar" type="text" />
         </form>
+        <div className="theme-toggle">+</div>
       </div>
     </nav>
   );
