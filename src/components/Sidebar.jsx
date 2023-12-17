@@ -1,6 +1,7 @@
-const Sidebar = () => {
+const Sidebar = ({ isSideBarOpened }) => {
+  console.log(isSideBarOpened);
   return (
-    <aside className="sidebar-container">
+    <aside className={`sidebar-container ${isSideBarOpened ? "active" : ""}`}>
       <div className="sidebar-center">
         <header>
           <h3 className="title">Stock App</h3>
