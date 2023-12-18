@@ -1,10 +1,16 @@
-const Sidebar = ({ isSideBarOpened }) => {
-  console.log(isSideBarOpened);
+import { IoClose } from "react-icons/io5";
+
+const Sidebar = ({ isSideBarOpened, setIsSideBarOpened }) => {
   return (
     <aside className={`sidebar-container ${isSideBarOpened ? "active" : ""}`}>
       <div className="sidebar-center">
         <header>
           <h3 className="title">Stock App</h3>
+
+          <IoClose
+            className="sidebar-close"
+            onClick={() => setIsSideBarOpened(false)}
+          />
         </header>
         <div className="link">Overview</div>
         <div className="link">WishList</div>

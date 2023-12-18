@@ -1,5 +1,5 @@
 import { CgMenuLeftAlt } from "react-icons/cg";
-import { useState } from "react";
+import { MdModeNight } from "react-icons/md";
 
 const TopBar = ({ isSideBarOpened, setIsSideBarOpened }) => {
   return (
@@ -12,7 +12,7 @@ const TopBar = ({ isSideBarOpened, setIsSideBarOpened }) => {
         <form action="">
           <input className="search-bar" type="text" />
         </form>
-        <div className="theme-toggle">+</div>
+        <MdModeNight className="theme-toggle" />
       </div>
     </nav>
   );
