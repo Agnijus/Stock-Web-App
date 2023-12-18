@@ -5,13 +5,15 @@ const TopBar = ({ isSideBarOpened, setIsSideBarOpened }) => {
   return (
     <nav className="topbar-container">
       <div className="topbar-center">
-        <CgMenuLeftAlt
-          onClick={() => setIsSideBarOpened(!isSideBarOpened)}
-          className="menu"
-        />
-        <form action="">
-          <input className="search-bar" type="text" />
-        </form>
+        <div className="topbar-left">
+          <CgMenuLeftAlt
+            onClick={() => setIsSideBarOpened(!isSideBarOpened)}
+            className="menu"
+          />
+          <form action="">
+            <input className="search-bar" type="text" />
+          </form>
+        </div>
         <MdModeNight className="theme-toggle" />
       </div>
     </nav>

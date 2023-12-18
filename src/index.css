@@ -102,6 +102,7 @@ p {
   left: 0;
 }
 .sidebar-close {
+  cursor: pointer;
   opacity: 0;
   display: none;
   font-size: 2rem;
@@ -135,6 +136,8 @@ p {
 /* topbar */
 
 .topbar-container {
+  background-color: white;
+  position: fixed;
   display: flex;
   align-items: center;
   width: 100%;
@@ -149,11 +152,19 @@ p {
   margin: 0 1rem;
 }
 
+.topbar-left {
+  display: flex;
+  align-items: center;
+}
+
 .menu {
   font-size: 2rem;
   cursor: pointer;
+  margin-right: 3rem;
 }
 .search-bar {
+  border-radius: var(--radius);
+  border: 1px solid #ccc;
   flex-grow: 1;
   width: 300px;
   height: 25px;
@@ -161,12 +172,14 @@ p {
 }
 
 .theme-toggle {
+  position: fixed;
+  right: 1rem;
   font-size: 1.5rem;
   transform: rotate(30deg);
 }
 
 .overview-container {
-  height: 100%;
+  height: 120vh;
   padding: 1rem;
   background-color: #f1f5f9;
 }
