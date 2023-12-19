@@ -136,8 +136,8 @@ p {
 /* topbar */
 
 .topbar-container {
-  background-color: white;
   position: fixed;
+  background-color: white;
   display: flex;
   align-items: center;
   width: 100%;
@@ -169,16 +169,18 @@ p {
   width: 300px;
   height: 25px;
   transition: var(--transition);
+  max-width: 800px;
 }
 
 .theme-toggle {
   position: fixed;
   right: 1rem;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   transform: rotate(30deg);
 }
 
 .overview-container {
+  margin-top: 60px;
   height: 120vh;
   padding: 1rem;
   background-color: #f1f5f9;
