@@ -1,5 +1,6 @@
 import { CgMenuLeftAlt } from "react-icons/cg";
 import { MdModeNight } from "react-icons/md";
+import { IoIosSearch } from "react-icons/io";
 
 const TopBar = ({ isSideBarOpened, setIsSideBarOpened }) => {
   return (
@@ -10,7 +11,8 @@ const TopBar = ({ isSideBarOpened, setIsSideBarOpened }) => {
             onClick={() => setIsSideBarOpened(!isSideBarOpened)}
             className="menu"
           />
-          <form action="">
+          <form className="search-form" action="">
+            <IoIosSearch className="search-icon" />
             <input className="search-bar" type="text" />
           </form>
         </div>
