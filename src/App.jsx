@@ -2,7 +2,6 @@ import Sidebar from "./components/Sidebar";
 import TopBar from "./components/TopBar";
 import Overview from "./components/Overview";
 import { useState, useEffect } from "react";
-import MenuModal from "./components/MenuModal";
 
 function App() {
   const [isSideBarOpened, setIsSideBarOpened] = useState(

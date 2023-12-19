@@ -13,3 +13,9 @@ export const useFetchStocks = () => {
   });
   return { isLoading, isError, data };
 };
+
+const add = (x, y, z) => {
+  return x + y + z;
+};
+
+const sum = add(1, 15, 3);
