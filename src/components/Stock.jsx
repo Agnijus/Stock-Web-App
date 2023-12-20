@@ -327,6 +327,7 @@ const Stock = () => {
         dataToolTipUnitsText={data.meta.currency}
         toolTipType="None"
         isSeriesHighlightingEnabled={false}
+        yAxisInterval={2}
       />
     </div>
   );
