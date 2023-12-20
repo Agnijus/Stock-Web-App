@@ -1,3 +1,4 @@
+import Stock from "./Stock";
 import { useFetchStocks } from "./reactQueryCustomHooks";
 
 const Overview = () => {
@@ -8,6 +9,10 @@ const Overview = () => {
   //   return <div>Loading...</div>;
   // }
 
-  return <div className="overview-container"></div>;
+  return (
+    <div className="overview-container">
+      <Stock />
+    </div>
+  );
 };
 export default Overview;

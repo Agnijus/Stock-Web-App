@@ -12,7 +12,12 @@
   "dependencies": {
     "@tanstack/react-query": "^5.14.1",
     "axios": "^1.6.2",
+    "chart.js": "^4.4.1",
+    "faker": "^5.5.3",
+    "igniteui-react-charts": "^18.4.0",
+    "igniteui-react-core": "^18.4.0",
     "react": "^18.2.0",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.12.0",
     "react-query": "^3.39.3"

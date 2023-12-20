@@ -6,16 +6,10 @@ export const useFetchStocks = () => {
     queryKey: ["stocks"],
     queryFn: async () => {
       const { data } = await customFetch.get(
-        "/time_series?symbol=tsla&interval=1month"
+        "/time_series?symbol=bac&interval=1h"
       );
       return data;
     },
   });
   return { isLoading, isError, data };
 };
-
-const add = (x, y, z) => {
-  return x + y + z;
-};
-
-const sum = add(1, 15, 3);
