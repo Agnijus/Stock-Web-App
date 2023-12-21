@@ -295,40 +295,41 @@ const Stock = () => {
   };
 
   return (
-    <div
-      className="stock-chart"
-      style={{ height: "200px", marginLeft: "-40px" }}
-    >
+    <div className="stock-container">
       <div>
         <div className="stock-title">Tesla</div>
         <div className="stock-price">255.95</div>
       </div>
-      <IgrFinancialChart
-        width="100%"
-        height="100%"
-        chartType="Line"
-        thickness={2}
-        titleAlignment="Left"
-        yAxisMode="Numeric"
-        dataSource={chartData}
-        isToolbarVisible={false}
-        markerTypes={[MarkerType.None]}
-        zoomSliderType="None"
-        xAxisInverted={true}
-        yAxisLabelLocation="OutsideLeft"
-        crosshairsSnapToData={false}
-        crosshairsDisplayMode="Both"
-        crosshairsAnnotationEnabled={true}
-        finalValueAnnotationsVisible={false}
-        calloutsVisible={true}
-        isHorizontalZoomEnabled={false}
-        dataToolTipValueFormatMinFractions={2}
-        dataToolTipHeaderText=""
-        dataToolTipUnitsText={data.meta.currency}
-        toolTipType="None"
-        isSeriesHighlightingEnabled={false}
-        yAxisInterval={2}
-      />
+      <div className="stock-chart">
+        <IgrFinancialChart
+          width="100%"
+          height="300px "
+          chartType="Line"
+          thickness={2}
+          titleAlignment="Left"
+          yAxisMode="Numeric"
+          dataSource={chartData}
+          isToolbarVisible={false}
+          markerTypes={[MarkerType.None]}
+          zoomSliderType="None"
+          xAxisInverted={true}
+          yAxisLabelLocation="OutsideLeft"
+          crosshairsSnapToData={false}
+          crosshairsDisplayMode="Both"
+          crosshairsAnnotationEnabled={true}
+          finalValueAnnotationsVisible={false}
+          calloutsVisible={true}
+          isHorizontalZoomEnabled={false}
+          dataToolTipValueFormatMinFractions={2}
+          dataToolTipHeaderText=""
+          dataToolTipUnitsText={data.meta.currency}
+          toolTipType="None"
+          isSeriesHighlightingEnabled={false}
+          yAxisInterval={2}
+          leftMargin={0}
+          plotAreaMarginRight={50}
+        />
+      </div>
     </div>
   );
 };
