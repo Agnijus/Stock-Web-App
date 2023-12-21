@@ -6,7 +6,7 @@ export const useFetchStocks = () => {
     queryKey: ["stocks"],
     queryFn: async () => {
       const { data } = await customFetch.get(
-        "/time_series?symbol=bac&interval=1h"
+        "/time_series?symbol=tsla,aapl&interval=5min&date=2023-12-21"
       );
       return data;
     },
