@@ -9,6 +9,7 @@ function App() {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [interval, setInterval] = useState("5min");
+  console.log(startDate, endDate, interval);
 
   useEffect(() => {
     // 1D - Default Date
