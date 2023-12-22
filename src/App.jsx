@@ -6,18 +6,22 @@ import { useState, useEffect, createContext } from "react";
 export const GlobalContext = createContext();
 
 function App() {
-  const [currDate, setCurrDate] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [interval, setInterval] = useState("5min");
 
   useEffect(() => {
-    formatDate(new Date());
-  }, []);
+    // 1D - Default Date
+    const date = new Date();
+    setEndDate(
+      `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+    );
 
-  const formatDate = (date) => {
-    const newDate = `${date.getFullYear()}-${
-      date.getMonth() + 1
-    }-${date.getDate()}`;
-    setCurrDate(newDate);
-  };
+    date.setDate(date.getDate() - 1);
+    setStartDate(
+      `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+    );
+  }, []);
 
   const [isSideBarOpened, setIsSideBarOpened] = useState(
     window.innerWidth > 800
@@ -46,7 +50,16 @@ function App() {
   };
 
   return (
-    <GlobalContext.Provider value={{ currDate, setCurrDate }}>
+    <GlobalContext.Provider
+      value={{
+        startDate,
+        setStartDate,
+        endDate,
+        setEndDate,
+        interval,
+        setInterval,
+      }}
+    >
       <main className="app">
         <Sidebar
           isSideBarOpened={isSideBarOpened}

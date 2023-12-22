@@ -4,13 +4,13 @@ import { useContext } from "react";
 import { GlobalContext } from "../App";
 
 export const useFetchStocks = () => {
-  const { currDate } = useContext(GlobalContext);
-
+  const { startDate, endDate, interval } = useContext(GlobalContext);
+  console.log(startDate, endDate);
   const { data, isError, error, isLoading } = useQuery({
     queryKey: ["stocks"],
     queryFn: async () => {
       const { data } = await customFetch.get(
-        `/time_series?symbol=tsla,aapl&interval=5min&start_date=2023-12-21&end_date=${currDate}`
+        `/time_series?symbol=tsla,aapl&interval=${interval}&start_date=${startDate}&end_date=${endDate}`
       );
       return data;
     },

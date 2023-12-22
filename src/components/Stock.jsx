@@ -3,12 +3,55 @@ import {
   IgrFinancialChartModule,
   MarkerType,
 } from "igniteui-react-charts";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { GlobalContext } from "../App";
 
 IgrFinancialChartModule.register();
 
 const Stock = ({ meta, values }) => {
+  const { setStartDate, setEndDate, setInterval } = useContext(GlobalContext);
   const [chartData, setChartData] = useState([]);
+
+  const setDates = (action) => {
+    const date = new Date();
+    setEndDate(
+      `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+    );
+    switch (action) {
+      // 1D
+      case 0:
+        console.log("1D");
+        break;
+      // 5D
+      case 1:
+        date.setDate(date.getDate() - 5);
+        setInterval("30min");
+        break;
+      // 1M
+      case 2:
+        console.log("1M");
+
+        break;
+      // 6M
+      case 3:
+        console.log("6M");
+
+        break;
+      // YTD
+      case 4:
+        console.log("YTD");
+
+        break;
+      // 1Y
+      case 5:
+        console.log("1Y");
+
+        break;
+    }
+    setStartDate(
+      `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+    );
+  };
 
   useEffect(() => {
     processData(values);
@@ -49,22 +92,22 @@ const Stock = ({ meta, values }) => {
         </div>
       </div>
       <div className="btn-container">
-        <button className="btn" type="button">
+        <button onClick={() => setDates(0)} className="btn" type="button">
           1D
         </button>
-        <button className="btn" type="button">
+        <button onClick={() => setDates(1)} className="btn" type="button">
           5D
         </button>
-        <button className="btn" type="button">
+        <button onClick={() => setDates(2)} className="btn" type="button">
           1M
         </button>
-        <button className="btn" type="button">
+        <button onClick={() => setDates(3)} className="btn" type="button">
           6M
         </button>
-        <button className="btn" type="button">
+        <button onClick={() => setDates(4)} className="btn" type="button">
           YTD
         </button>
-        <button className="btn" type="button">
+        <button onClick={() => setDates(5)} className="btn" type="button">
           1Y
         </button>
       </div>

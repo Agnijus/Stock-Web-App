@@ -260,6 +260,7 @@ p {
   background: transparent;
   border: none;
   border-right: 1px solid grey;
+  cursor: pointer;
 }
 .stock-container .btn:last-child {
   border-right: none;
