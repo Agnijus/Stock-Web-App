@@ -1,27 +1,15 @@
 import Sidebar from "./components/Sidebar";
 import TopBar from "./components/TopBar";
 import Overview from "./components/Overview";
-import { useState, useEffect, createContext } from "react";
-
-export const GlobalContext = createContext();
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setOneDay } from "./components/features/stock/stockSlice";
 
 function App() {
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [interval, setInterval] = useState("5min");
-  console.log(startDate, endDate, interval);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    // 1D - Default Date
-    const date = new Date();
-    setEndDate(
-      `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
-    );
-
-    date.setDate(date.getDate() - 1);
-    setStartDate(
-      `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
-    );
+    dispatch(setOneDay());
   }, []);
 
   const [isSideBarOpened, setIsSideBarOpened] = useState(
@@ -51,30 +39,19 @@ function App() {
   };
 
   return (
-    <GlobalContext.Provider
-      value={{
-        startDate,
-        setStartDate,
-        endDate,
-        setEndDate,
-        interval,
-        setInterval,
-      }}
-    >
-      <main className="app">
-        <Sidebar
+    <main className="app">
+      <Sidebar
+        isSideBarOpened={isSideBarOpened}
+        setIsSideBarOpened={toggleSidebar}
+      />
+      <div className={`right-side ${isSideBarOpened ? "active" : ""}`}>
+        <TopBar
           isSideBarOpened={isSideBarOpened}
           setIsSideBarOpened={toggleSidebar}
         />
-        <div className={`right-side ${isSideBarOpened ? "active" : ""}`}>
-          <TopBar
-            isSideBarOpened={isSideBarOpened}
-            setIsSideBarOpened={toggleSidebar}
-          />
-          <Overview />
-        </div>
-      </main>
-    </GlobalContext.Provider>
+        <Overview />
+      </div>
+    </main>
   );
 }
 

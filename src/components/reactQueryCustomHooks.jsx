@@ -1,11 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import customFetch from "../util";
-import { useContext } from "react";
-import { GlobalContext } from "../App";
+import { useSelector } from "react-redux";
 
 export const useFetchStocks = () => {
-  const { startDate, endDate, interval } = useContext(GlobalContext);
-  console.log(startDate, endDate, interval);
+  const { startDate, endDate, interval } = useSelector((state) => state.stock);
 
   const { data, isError, error, isLoading } = useQuery({
     queryKey: ["stocks", startDate, endDate, interval],
