@@ -1,9 +1,24 @@
 import Sidebar from "./components/Sidebar";
 import TopBar from "./components/TopBar";
 import Overview from "./components/Overview";
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext } from "react";
+
+export const GlobalContext = createContext();
 
 function App() {
+  const [currDate, setCurrDate] = useState("");
+
+  useEffect(() => {
+    formatDate(new Date());
+  }, []);
+
+  const formatDate = (date) => {
+    const newDate = `${date.getFullYear()}-${
+      date.getMonth() + 1
+    }-${date.getDate()}`;
+    setCurrDate(newDate);
+  };
+
   const [isSideBarOpened, setIsSideBarOpened] = useState(
     window.innerWidth > 800
   );
@@ -31,19 +46,21 @@ function App() {
   };
 
   return (
-    <main className="app">
-      <Sidebar
-        isSideBarOpened={isSideBarOpened}
-        setIsSideBarOpened={toggleSidebar}
-      />
-      <div className={`right-side ${isSideBarOpened ? "active" : ""}`}>
-        <TopBar
+    <GlobalContext.Provider value={{ currDate, setCurrDate }}>
+      <main className="app">
+        <Sidebar
           isSideBarOpened={isSideBarOpened}
           setIsSideBarOpened={toggleSidebar}
         />
-        <Overview />
-      </div>
-    </main>
+        <div className={`right-side ${isSideBarOpened ? "active" : ""}`}>
+          <TopBar
+            isSideBarOpened={isSideBarOpened}
+            setIsSideBarOpened={toggleSidebar}
+          />
+          <Overview />
+        </div>
+      </main>
+    </GlobalContext.Provider>
   );
 }
 

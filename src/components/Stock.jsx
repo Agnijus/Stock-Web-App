@@ -8,7 +8,6 @@ import { useState, useEffect } from "react";
 IgrFinancialChartModule.register();
 
 const Stock = ({ meta, values }) => {
-  console.log(meta, values);
   const [chartData, setChartData] = useState([]);
 
   useEffect(() => {
@@ -46,7 +45,7 @@ const Stock = ({ meta, values }) => {
       <div>
         <div className="stock-title">{meta.symbol}</div>
         <div className="stock-price">
-          {parseFloat(values[0].close).toFixed(2)}
+          {parseInt(values[0].close).toFixed(2)}
         </div>
       </div>
       <div className="btn-container">
@@ -74,6 +73,8 @@ const Stock = ({ meta, values }) => {
           width="100%"
           height="250px "
           chartType="Line"
+          brushes="#b3d9b3"
+          outlines="#80c080"
           thickness={2}
           titleAlignment="Left"
           yAxisMode="Numeric"
@@ -89,7 +90,7 @@ const Stock = ({ meta, values }) => {
           finalValueAnnotationsVisible={false}
           calloutsVisible={true}
           isHorizontalZoomEnabled={false}
-          dataToolTipValueFormatMinFractions={2}
+          dataToolTipValueFormatMinFractions={1}
           dataToolTipHeaderText=""
           toolTipType="None"
           isSeriesHighlightingEnabled={false}
