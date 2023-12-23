@@ -110,7 +110,7 @@ const Stock = ({ meta, values }) => {
           dataToolTipHeaderText=""
           toolTipType="None"
           isSeriesHighlightingEnabled={false}
-          yAxisInterval={2}
+          yAxisInterval={1}
           leftMargin={0}
           plotAreaMarginRight={50}
         />
