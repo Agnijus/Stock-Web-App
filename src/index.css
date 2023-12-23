@@ -206,6 +206,9 @@ p {
 }
 
 @media screen and (max-width: 800px) {
+  .sidebar-container {
+    z-index: 11;
+  }
   .sidebar-close {
     display: block;
     opacity: 1;

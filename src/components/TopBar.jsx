@@ -1,14 +1,18 @@
 import { CgMenuLeftAlt } from "react-icons/cg";
 import { MdModeNight } from "react-icons/md";
 import { IoIosSearch } from "react-icons/io";
+import { useDispatch } from "react-redux";
+import { toggleSidebar } from "./features/menu/menuSlice";
 
-const TopBar = ({ isSideBarOpened, setIsSideBarOpened }) => {
+const TopBar = () => {
+  const dispatch = useDispatch();
+
   return (
     <nav className="topbar-container">
       <div className="topbar-center">
         <div className="topbar-left">
           <CgMenuLeftAlt
-            onClick={() => setIsSideBarOpened(!isSideBarOpened)}
+            onClick={() => dispatch(toggleSidebar())}
             className="menu"
           />
           <form className="search-form" action="">

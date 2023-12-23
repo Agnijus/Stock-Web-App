@@ -1,6 +1,10 @@
 import { IoClose } from "react-icons/io5";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleSidebar } from "./features/menu/menuSlice";
 
-const Sidebar = ({ isSideBarOpened, setIsSideBarOpened }) => {
+const Sidebar = () => {
+  const dispatch = useDispatch();
+  const { isSideBarOpened } = useSelector((state) => state.menu);
   return (
     <aside className={`sidebar-container ${isSideBarOpened ? "active" : ""}`}>
       <div className="sidebar-center">
@@ -9,7 +13,7 @@ const Sidebar = ({ isSideBarOpened, setIsSideBarOpened }) => {
 
           <IoClose
             className="sidebar-close"
-            onClick={() => setIsSideBarOpened(false)}
+            onClick={() => dispatch(toggleSidebar())}
           />
         </header>
         <div className="link">Overview</div>
