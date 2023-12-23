@@ -36,7 +36,7 @@ const Stock = ({ meta, values }) => {
         {meta && <div className="stock-title">{meta.symbol}</div>}
         {values && (
           <div className="stock-price">
-            {parseInt(values[0].close).toFixed(2)}
+            {parseFloat(values[0].close).toFixed(2)}
           </div>
         )}
       </div>
