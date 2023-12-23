@@ -3,21 +3,16 @@ import TopBar from "./components/TopBar";
 import Overview from "./components/Overview";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setOneDay } from "./components/features/stock/stockSlice";
 import { handleResize } from "./components/features/menu/menuSlice";
+import { setAndFetchOneDay } from "./components/features/stock/stockSlice";
 
 function App() {
   const dispatch = useDispatch();
   const { isSideBarOpened } = useSelector((state) => state.menu);
 
   useEffect(() => {
-    dispatch(setOneDay());
+    dispatch(setAndFetchOneDay());
   }, []);
-
-  // const [isSideBarOpened, setIsSideBarOpened] = useState(
-  //   window.innerWidth > 800
-  // );
-  // const [isManuallyClosed, setIsManuallyClosed] = useState(false);
 
   useEffect(() => {
     const resizeHandler = () => {

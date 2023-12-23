@@ -6,12 +6,12 @@ import {
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import {
-  setOneDay,
-  setFiveDays,
-  setOneMonth,
-  setSixMonths,
-  setYearToDate,
-  setOneYear,
+  setAndFetchOneDay,
+  setAndFetchFiveDays,
+  setAndFetchOneMonth,
+  setAndFetchSixMonths,
+  setAndFetchYearToDate,
+  setAndFetchOneYear,
 } from "./features/stock/stockSlice";
 
 IgrFinancialChartModule.register();
@@ -26,9 +26,10 @@ const Stock = ({ meta, values }) => {
       close: parseFloat(item.close),
     }));
     setChartData(processedData);
-  }, []);
+  }, [values]);
 
   console.log("re-render");
+  console.log(chartData);
 
   return (
     <div className="stock-container">
@@ -42,42 +43,44 @@ const Stock = ({ meta, values }) => {
       </div>
       <div className="btn-container">
         <button
-          onClick={() => dispatch(setOneDay())}
+          onClick={() => dispatch(setAndFetchOneDay())}
           className="btn"
           type="button"
         >
           1D
         </button>
         <button
-          onClick={() => dispatch(setFiveDays())}
+          onClick={() => dispatch(setAndFetchFiveDays())}
           className="btn"
           type="button"
         >
           5D
         </button>
         <button
-          onClick={() => dispatch(setOneMonth())}
+          onClick={() => dispatch(setAndFetchOneMonth())}
           className="btn"
           type="button"
         >
           1M
         </button>
         <button
-          onClick={() => dispatch(setSixMonths())}
+          onClick={() => dispatch(setAndFetchSixMonths())}
           className="btn"
           type="button"
         >
           6M
         </button>
         <button
-          onClick={() => dispatch(setYearToDate())}
+          onClick={() => dispatch(setAndFetchYearToDate())}
           className="btn"
           type="button"
         >
           YTD
         </button>
         <button
-          onClick={() => dispatch(setOneYear())}
+          onClick={() => {
+            dispatch(setAndFetchOneYear());
+          }}
           className="btn"
           type="button"
         >
@@ -110,7 +113,7 @@ const Stock = ({ meta, values }) => {
           dataToolTipHeaderText=""
           toolTipType="None"
           isSeriesHighlightingEnabled={false}
-          yAxisInterval={1}
+          yAxisInterval={20}
           leftMargin={0}
           plotAreaMarginRight={50}
         />
