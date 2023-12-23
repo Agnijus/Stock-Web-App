@@ -2,9 +2,10 @@ import {
   IgrFinancialChart,
   IgrFinancialChartModule,
   MarkerType,
+  TimeAxisIntervalType,
 } from "igniteui-react-charts";
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   setAndFetchOneDay,
   setAndFetchFiveDays,
@@ -18,6 +19,7 @@ IgrFinancialChartModule.register();
 
 const Stock = ({ meta, values }) => {
   const dispatch = useDispatch();
+  const { interval } = useSelector((state) => state.stock);
   const [chartData, setChartData] = useState([]);
 
   useEffect(() => {
@@ -27,9 +29,6 @@ const Stock = ({ meta, values }) => {
     }));
     setChartData(processedData);
   }, [values]);
-
-  console.log("re-render");
-  console.log(chartData);
 
   return (
     <div className="stock-container">
@@ -97,11 +96,11 @@ const Stock = ({ meta, values }) => {
           thickness={2}
           titleAlignment="Left"
           yAxisMode="Numeric"
+          xAxisMode={"Time"}
           dataSource={chartData}
           isToolbarVisible={false}
           markerTypes={[MarkerType.None]}
           zoomSliderType="None"
-          xAxisInverted={true}
           yAxisLabelLocation="OutsideLeft"
           crosshairsSnapToData={false}
           crosshairsDisplayMode="Both"
@@ -113,7 +112,6 @@ const Stock = ({ meta, values }) => {
           dataToolTipHeaderText=""
           toolTipType="None"
           isSeriesHighlightingEnabled={false}
-          yAxisInterval={20}
           leftMargin={0}
           plotAreaMarginRight={50}
         />
