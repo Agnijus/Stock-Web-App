@@ -1,17 +1,8 @@
 import Stock from "./Stock";
-import { useFetchStocks } from "./reactQueryCustomHooks";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchStockData } from "./features/stock/stockSlice";
+import { useSelector } from "react-redux";
 
 const Overview = () => {
-  // const { isLoading, isError, error, data } = useFetchStocks();
-  const dispatch = useDispatch();
   const { data, loading, error } = useSelector((state) => state.stock);
-
-  useEffect(() => {
-    dispatch(fetchStockData());
-  }, [dispatch]);
 
   if (loading) {
     return <div>Loading...</div>;

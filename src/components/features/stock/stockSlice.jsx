@@ -108,53 +108,6 @@ const stockSlice = createSlice({
       state.endDate = action.payload.endDate;
       state.interval = action.payload.interval;
     },
-    // setOneDay: (state) => {
-    //   const date = new Date();
-    //   state.endDate = formatDate(date);
-    //   date.setDate(date.getDate() - 1);
-    //   state.startDate = formatDate(date);
-    //   state.interval = "5min";
-    // },
-    // setFiveDays: (state) => {
-    //   const date = new Date();
-    //   state.endDate = formatDate(date);
-    //   date.setDate(date.getDate() - 5);
-    //   state.startDate = formatDate(date);
-    //   state.interval = "30min";
-    // },
-    // setOneMonth: (state) => {
-    //   const date = new Date();
-    //   state.endDate = formatDate(date);
-
-    //   date.setDate(date.getDate() - 30);
-    //   state.startDate = formatDate(date);
-    //   state.interval = "1day";
-    // },
-    // setSixMonths: (state) => {
-    //   const date = new Date();
-    //   state.endDate = formatDate(date);
-
-    //   date.setDate(date.getDate() - 180);
-    //   state.startDate = formatDate(date);
-    //   state.interval = "1day";
-    // },
-    // setYearToDate: (state) => {
-    //   const date = new Date();
-    //   state.endDate = formatDate(date);
-
-    //   date.setMonth(0);
-    //   date.setDate(1);
-    //   state.startDate = formatDate(date);
-    //   state.interval = "1day";
-    // },
-    // setOneYear: (state) => {
-    //   const date = new Date();
-    //   state.endDate = formatDate(date);
-
-    //   date.setDate(date.getDate() - 365);
-    //   state.startDate = formatDate(date);
-    //   state.interval = "1day";
-    // },
   },
   extraReducers: (builder) => {
     builder
