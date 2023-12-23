@@ -21,16 +21,14 @@ const Stock = ({ meta, values }) => {
   const [chartData, setChartData] = useState([]);
 
   useEffect(() => {
-    if (values) {
-      const processedData = values.map((item) => ({
-        datetime: new Date(item.datetime),
-        close: parseFloat(item.close),
-      }));
-      setChartData(processedData);
-    }
+    const processedData = values.map((item) => ({
+      datetime: new Date(item.datetime),
+      close: parseFloat(item.close),
+    }));
+    setChartData(processedData);
   }, []);
 
-  console.log(chartData);
+  console.log("re-render");
 
   return (
     <div className="stock-container">
