@@ -23,10 +23,18 @@ export const fetchStockData = createAsyncThunk(
   "stock/fetchStockData",
   async (_, { getState }) => {
     const { stock } = getState();
-    const response = await customFetch.get(
-      `/time_series?symbol=tsla&interval=${stock.interval}&start_date=${stock.startDate}&end_date=${stock.endDate}`
-    );
-    return response.data;
+
+    if (stock.startDate === stock.endDate) {
+      const response = await customFetch.get(
+        `/time_series?symbol=tsla&interval=${stock.interval}&date=${stock.startDate}`
+      );
+      return response.data;
+    } else {
+      const response = await customFetch.get(
+        `/time_series?symbol=tsla&interval=${stock.interval}&start_date=${stock.startDate}&end_date=${stock.endDate}`
+      );
+      return response.data;
+    }
   }
 );
 
@@ -35,13 +43,19 @@ export const setAndFetchOneDay = createAsyncThunk(
   async (_, { dispatch }) => {
     let date = new Date();
     date = adjustForWeekend(date);
-    const endDate = formatDate(date);
+    // const endDate = formatDate(date);
+    const lastTradingDay = formatDate(date);
+    // date.setDate(date.getDate());
+    // date = adjustForWeekend(date);
+    // const startDate = formatDate(date);
 
-    date.setDate(date.getDate() - 1);
-    date = adjustForWeekend(date);
-    const startDate = formatDate(date);
-
-    dispatch(setDateRange({ startDate, endDate, interval: "5min" }));
+    dispatch(
+      setDateRange({
+        startDate: lastTradingDay,
+        endDate: lastTradingDay,
+        interval: "5min",
+      })
+    );
     dispatch(fetchStockData());
   }
 );
