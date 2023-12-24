@@ -25,8 +25,10 @@ export const fetchStockData = createAsyncThunk(
     const { stock } = getState();
 
     if (stock.startDate === stock.endDate) {
+      const { data } = await customFetch.get(`/quote?symbol=tsla`);
+
       const response = await customFetch.get(
-        `/time_series?symbol=tsla&interval=${stock.interval}&date=${stock.startDate}`
+        `/time_series?symbol=tsla&interval=${stock.interval}&date=${data.datetime}`
       );
       return response.data;
     } else {
@@ -43,11 +45,7 @@ export const setAndFetchOneDay = createAsyncThunk(
   async (_, { dispatch }) => {
     let date = new Date();
     date = adjustForWeekend(date);
-    // const endDate = formatDate(date);
     const lastTradingDay = formatDate(date);
-    // date.setDate(date.getDate());
-    // date = adjustForWeekend(date);
-    // const startDate = formatDate(date);
 
     dispatch(
       setDateRange({
