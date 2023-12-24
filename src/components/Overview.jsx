@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 const Overview = () => {
   const { data, loading, error } = useSelector((state) => state.stock);
 
-  if (loading) {
+  if (loading || !data.meta || !data.values) {
     return <div>Loading...</div>;
   }
 
@@ -15,9 +15,12 @@ const Overview = () => {
   return (
     <section className="overview-container">
       <div className="stock-grid">
-        {Object.keys(data).map((key) => {
-          return <Stock key={key} {...data[key]} />;
-        })}
+        <Stock {...data} />
+        <div className="stock-info">
+          <div className="stock-open"></div>
+          <div className="stock-high"></div>
+          <div className="stock-low"></div>
+        </div>
       </div>
     </section>
   );

@@ -2,10 +2,9 @@ import {
   IgrFinancialChart,
   IgrFinancialChartModule,
   MarkerType,
-  TimeAxisIntervalType,
 } from "igniteui-react-charts";
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   setAndFetchOneDay,
   setAndFetchFiveDays,
@@ -19,7 +18,6 @@ IgrFinancialChartModule.register();
 
 const Stock = ({ meta, values }) => {
   const dispatch = useDispatch();
-  const { interval } = useSelector((state) => state.stock);
   const [chartData, setChartData] = useState([]);
 
   useEffect(() => {
@@ -97,6 +95,7 @@ const Stock = ({ meta, values }) => {
           titleAlignment="Left"
           yAxisMode="Numeric"
           xAxisMode={"Time"}
+          // xAxisInverted={true}
           dataSource={chartData}
           isToolbarVisible={false}
           markerTypes={[MarkerType.None]}

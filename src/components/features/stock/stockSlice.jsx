@@ -1,6 +1,20 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import customFetch from "../../../util";
 
+const adjustForWeekend = (date) => {
+  const dayOfWeek = date.getDay();
+
+  if (dayOfWeek === 0) {
+    // Sunday
+    date.setDate(date.getDate() - 2); // Move to Friday
+  } else if (dayOfWeek === 6) {
+    // Saturday
+    date.setDate(date.getDate() - 1); // Move to Friday
+  }
+
+  return date;
+};
+
 const formatDate = (date) => {
   return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 };
@@ -10,7 +24,7 @@ export const fetchStockData = createAsyncThunk(
   async (_, { getState }) => {
     const { stock } = getState();
     const response = await customFetch.get(
-      `/time_series?symbol=tsla,aapl&interval=${stock.interval}&start_date=${stock.startDate}&end_date=${stock.endDate}`
+      `/time_series?symbol=tsla&interval=${stock.interval}&start_date=${stock.startDate}&end_date=${stock.endDate}`
     );
     return response.data;
   }
@@ -19,10 +33,14 @@ export const fetchStockData = createAsyncThunk(
 export const setAndFetchOneDay = createAsyncThunk(
   "stock/setAndFetchOneDay",
   async (_, { dispatch }) => {
-    const date = new Date();
+    let date = new Date();
+    date = adjustForWeekend(date);
     const endDate = formatDate(date);
+
     date.setDate(date.getDate() - 1);
+    date = adjustForWeekend(date);
     const startDate = formatDate(date);
+
     dispatch(setDateRange({ startDate, endDate, interval: "5min" }));
     dispatch(fetchStockData());
   }
