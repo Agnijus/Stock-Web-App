@@ -24,19 +24,26 @@ export const fetchStockData = createAsyncThunk(
   async (_, { getState }) => {
     const { stock } = getState();
 
-    if (stock.startDate === stock.endDate) {
-      const { data } = await customFetch.get(`/quote?symbol=tsla`);
+    const { data } = await customFetch.get(`/quote?symbol=${stock.symbol}`);
+    let startDate = new Date(data.datetime);
 
-      const response = await customFetch.get(
-        `/time_series?symbol=tsla&interval=${stock.interval}&date=${data.datetime}`
-      );
-      return response.data;
-    } else {
-      const response = await customFetch.get(
-        `/time_series?symbol=tsla&interval=${stock.interval}&start_date=${stock.startDate}&end_date=${stock.endDate}`
-      );
-      return response.data;
+    switch (stock.interval) {
+      case "5min":
+        const response = await customFetch.get(
+          `/time_series?symbol=tsla&interval=${stock.interval}&date=${data.datetime}`
+        );
+        return response.data;
+      case "30min":
+        startDate.setDate(startDate.getDate() - 5);
+        startDate = formatDate(startDate);
+
+        break;
     }
+
+    const response = await customFetch.get(
+      `/time_series?symbol=tsla&interval=${stock.interval}&start_date=${startDate}&end_date=${data.datetime}`
+    );
+    return response.data;
   }
 );
 
@@ -121,6 +128,7 @@ export const setAndFetchOneYear = createAsyncThunk(
 );
 
 const initialState = {
+  symbol: "tsla",
   startDate: "",
   endDate: "",
   interval: "5min",
