@@ -51,10 +51,55 @@ export const fetchStockData = createAsyncThunk(
 export const searchStocks = createAsyncThunk(
   "stock/searchStocks",
   async (_, { getState }) => {
-    const response = await axios.get("/.netlify/functions/searchStocks");
+    const response = await axios.get(
+      "/.netlify/functions/searchStocks?term=tsla"
+    );
     console.log(response);
   }
 );
+
+// export const updateStocks = createAsyncThunk(
+//   "stock/updateStocks",
+//   async (_, { getState }) => {
+//     try {
+//       // Fetch the stock data
+//       const { data } = await customFetch.get(`/stocks`);
+//       console.log("Fetched stock data:", data);
+
+//       // Function to send a batch of data
+//       const sendBatch = async (batch) => {
+//         try {
+//           const response = await axios.post(
+//             "/.netlify/functions/updateStocks",
+//             JSON.stringify(batch)
+//           );
+//           return response.data;
+//         } catch (error) {
+//           console.error("Error in sending batch:", error);
+//           throw error; // Rethrow to handle in the main try-catch
+//         }
+//       };
+
+//       // Define batch size
+//       const batchSize = 250; // Adjust batch size as needed
+
+//       // Process data in batches
+//       for (let i = 0; i < data.data.length; i += batchSize) {
+//         const batch = data.data.slice(i, i + batchSize);
+//         const batchResponse = await sendBatch(batch);
+//         console.log(
+//           `Batch response for batch starting at index ${i}:`,
+//           batchResponse
+//         );
+//       }
+
+//       // Complete message
+//       console.log("All batches processed successfully");
+//     } catch (error) {
+//       console.error("Error updating stocks:", error);
+//     }
+//   }
+// );
 
 const initialState = {
   symbol: "tsla",

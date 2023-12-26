@@ -9,10 +9,12 @@ exports.handler = async (event) => {
       process.env.VITE_APP_DATABASE_URL
     );
 
+    const term = `${event.queryStringParameters.term}%`;
+
     // Your query execution
     const [rows] = await connection.execute(
-      "SELECT * FROM stocks WHERE name LIKE ?",
-      [`%${event.queryStringParameters.searchTerm}%`]
+      "SELECT * FROM stocks WHERE name LIKE ? OR symbol LIKE ?",
+      [term, term]
     );
 
     return {
