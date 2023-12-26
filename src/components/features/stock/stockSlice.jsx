@@ -51,9 +51,7 @@ export const fetchStockData = createAsyncThunk(
 export const fetchStockInfo = createAsyncThunk(
   "stock/fetchStockInfo",
   async (_, { getState }) => {
-    const response = await axios.get(
-      "/netlify-functions/searchStocks?searchTerm=Apple"
-    );
+    const response = await axios.get("/netlify-functions/searchStocks");
     console.log(response);
   }
 );
