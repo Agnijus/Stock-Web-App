@@ -48,10 +48,10 @@ export const fetchStockData = createAsyncThunk(
     return response.data;
   }
 );
-export const fetchStockInfo = createAsyncThunk(
-  "stock/fetchStockInfo",
+export const searchStocks = createAsyncThunk(
+  "stock/searchStocks",
   async (_, { getState }) => {
-    const response = await axios.get("/netlify-functions/searchStocks");
+    const response = await axios.get("/.netlify/functions/searchStocks");
     console.log(response);
   }
 );

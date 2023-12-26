@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { handleResize } from "./components/features/menu/menuSlice";
 import {
   fetchStockData,
-  fetchStockInfo,
+  searchStocks,
 } from "./components/features/stock/stockSlice";
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchStockData());
-    dispatch(fetchStockInfo());
+    dispatch(searchStocks());
   }, []);
 
   useEffect(() => {
