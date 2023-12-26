@@ -5,14 +5,7 @@ import {
 } from "igniteui-react-charts";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import {
-  setAndFetchOneDay,
-  setAndFetchFiveDays,
-  setAndFetchOneMonth,
-  setAndFetchSixMonths,
-  setAndFetchYearToDate,
-  setAndFetchOneYear,
-} from "./features/stock/stockSlice";
+import { setTimePeriod, fetchStockData } from "./features/stock/stockSlice";
 
 IgrFinancialChartModule.register();
 
@@ -40,35 +33,50 @@ const Stock = ({ meta, values }) => {
       </div>
       <div className="btn-container">
         <button
-          onClick={() => dispatch(setAndFetchOneDay())}
+          onClick={() => {
+            dispatch(setTimePeriod({ timeFrame: "1D", interval: "5min" }));
+            dispatch(fetchStockData());
+          }}
           className="btn"
           type="button"
         >
           1D
         </button>
         <button
-          onClick={() => dispatch(setAndFetchFiveDays())}
+          onClick={() => {
+            dispatch(setTimePeriod({ timeFrame: "5D", interval: "30min" }));
+            dispatch(fetchStockData());
+          }}
           className="btn"
           type="button"
         >
           5D
         </button>
         <button
-          onClick={() => dispatch(setAndFetchOneMonth())}
+          onClick={() => {
+            dispatch(setTimePeriod({ timeFrame: "1M", interval: "1day" }));
+            dispatch(fetchStockData());
+          }}
           className="btn"
           type="button"
         >
           1M
         </button>
         <button
-          onClick={() => dispatch(setAndFetchSixMonths())}
+          onClick={() => {
+            dispatch(setTimePeriod({ timeFrame: "6M", interval: "1day" }));
+            dispatch(fetchStockData());
+          }}
           className="btn"
           type="button"
         >
           6M
         </button>
         <button
-          onClick={() => dispatch(setAndFetchYearToDate())}
+          onClick={() => {
+            dispatch(setTimePeriod({ timeFrame: "YTD", interval: "1day" }));
+            dispatch(fetchStockData());
+          }}
           className="btn"
           type="button"
         >
@@ -76,7 +84,8 @@ const Stock = ({ meta, values }) => {
         </button>
         <button
           onClick={() => {
-            dispatch(setAndFetchOneYear());
+            dispatch(setTimePeriod({ timeFrame: "1Y", interval: "1day" }));
+            dispatch(fetchStockData());
           }}
           className="btn"
           type="button"
