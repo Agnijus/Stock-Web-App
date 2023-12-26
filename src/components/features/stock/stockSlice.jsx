@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import customFetch from "../../../util";
+import axios from "axios";
 
 const formatDate = (date) => {
   return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
@@ -45,6 +46,15 @@ export const fetchStockData = createAsyncThunk(
       `/time_series?symbol=${stock.symbol}&interval=${stock.interval}&start_date=${startDate}&end_date=${data.datetime}`
     );
     return response.data;
+  }
+);
+export const fetchStockInfo = createAsyncThunk(
+  "stock/fetchStockInfo",
+  async (_, { getState }) => {
+    const response = await axios.get(
+      "/netlify-functions/searchStocks?searchTerm=Apple"
+    );
+    console.log(response);
   }
 );
 

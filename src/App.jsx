@@ -4,7 +4,10 @@ import Overview from "./components/Overview";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { handleResize } from "./components/features/menu/menuSlice";
-import { fetchStockData } from "./components/features/stock/stockSlice";
+import {
+  fetchStockData,
+  fetchStockInfo,
+} from "./components/features/stock/stockSlice";
 
 function App() {
   const dispatch = useDispatch();
@@ -12,6 +15,7 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchStockData());
+    dispatch(fetchStockInfo());
   }, []);
 
   useEffect(() => {
