@@ -36,13 +36,16 @@ const Stock = ({ meta, values }) => {
     setChartData(processedData);
   }, [values]);
 
-  const displayedDays = new Set();
+  // const displayedDays = new Set();
 
   const formatX = (item) => {
     const day = item.getDate();
-    const time = `${item.getHours()}:${item.getMinutes()}`;
+    const time = `${item.getHours()}:${item
+      .getMinutes()
+      .toString()
+      .padStart(2, "0")}`;
 
-    return `${month[item.getMonth()]} ${day}  `;
+    return `${month[item.getMonth()]} ${day}  ${time}`;
   };
 
   return (
@@ -128,7 +131,6 @@ const Stock = ({ meta, values }) => {
           titleAlignment="Left"
           yAxisMode="Numeric"
           xAxisMode={timeFrame === "5D" ? "Ordinal" : "Time"}
-          // xAxisFormatLabel={formatDateAsMonthAndYear}
           xAxisFormatLabel={formatX}
           xAxisInverted={timeFrame === "5D" ? true : false}
           dataSource={chartData}
