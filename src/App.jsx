@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchStockData());
-    // dispatch(searchStocks());
+    dispatch(searchStocks());
   }, []);
 
   useEffect(() => {
