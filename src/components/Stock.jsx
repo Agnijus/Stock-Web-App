@@ -141,7 +141,7 @@ const Stock = ({ meta, values }) => {
           width="100%"
           height="250px "
           chartType="Line"
-          brushes="#b3d9b3"
+          brushes={priceChange > 0 ? "#95ce94" : "#d16666"}
           outlines="#80c080"
           thickness={2}
           titleAlignment="Left"

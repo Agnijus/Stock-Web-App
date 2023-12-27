@@ -309,11 +309,11 @@ p {
 
 .stock-change {
   font-weight: 500;
-  color: green;
+  color: #2a9c29;
 }
 
 .stock-change-negative {
-  color: rgb(185, 2, 2);
+  color: #b30000;
 }
 
 .stock-price-change {
