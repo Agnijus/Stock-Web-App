@@ -36,8 +36,6 @@ const Stock = ({ meta, values }) => {
     setChartData(processedData);
   }, [values]);
 
-  // const displayedDays = new Set();
-
   const formatX = (item) => {
     const day = item.getDate();
     const time = `${item.getHours()}:${item
@@ -48,26 +46,12 @@ const Stock = ({ meta, values }) => {
     return `${month[item.getMonth()]} ${day}  ${time}`;
   };
 
-  console.log(values);
-
-  // const change = values[values.length - 1].close - values[0].close;
-  // const change = values[0].close - values[values.length - 1].close;
-  // const percentChange = (change / values[0].close) * 100;
-  // console.log(change, percentChange);
-
-  // Ensure that you're getting numerical values for the prices
-  const startPrice = parseFloat(values[values.length - 1].close); // Starting price
-  const endPrice = parseFloat(values[0].close); // Ending price
-
-  // Calculate the change in price
+  const startPrice = parseFloat(values[values.length - 1].close);
+  const endPrice = parseFloat(values[0].close);
   const priceChange = endPrice - startPrice;
-
-  // Calculate the percentage change
   const percentChange = (priceChange / startPrice) * 100;
 
-  // Log the change and the percentage change, rounding the percentage to two decimal places
-  console.log(`Change: ${priceChange}`);
-  console.log(`Percentage Change: ${percentChange.toFixed(2)}%`);
+  console.log(values);
 
   return (
     <div className="stock-container">
@@ -76,7 +60,11 @@ const Stock = ({ meta, values }) => {
         <div className="stock-price">
           {`${parseFloat(values[0].close).toFixed(2)} ${meta.currency}`}
         </div>
-        <div className="stock-change">
+        <div
+          className={`stock-change ${
+            priceChange < 0 && "stock-change-negative"
+          }`}
+        >
           <span className="stock-price-change">
             {priceChange > 0 && "+"}
             {priceChange.toFixed(2)}
@@ -179,6 +167,20 @@ const Stock = ({ meta, values }) => {
           leftMargin={0}
           plotAreaMarginRight={50}
         />
+      </div>
+      <div className="stock-additional-info">
+        <span className="stock-additional">
+          <span className="additional-title">Open</span>
+          {parseFloat(values[0].open).toFixed(2)}
+        </span>
+        <span className="stock-additional">
+          <span className="additional-title">High</span>
+          {parseFloat(values[0].high).toFixed(2)}
+        </span>
+        <span className="stock-additional">
+          <span className="additional-title">Low</span>
+          {parseFloat(values[0].low).toFixed(2)}
+        </span>
       </div>
     </div>
   );

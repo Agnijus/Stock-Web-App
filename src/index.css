@@ -265,7 +265,7 @@ p {
   background-color: white;
   padding: 1rem;
   padding-right: 2rem;
-  height: 400px;
+  height: 475px;
 }
 
 .btn-container {
@@ -294,7 +294,7 @@ p {
 
 .stock-main-info {
   margin-left: 1.25rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .stock-title {
@@ -304,20 +304,39 @@ p {
 }
 
 .stock-price {
-  margin-bottom: 0.5rem;
   font-weight: 500;
 }
 
+.stock-change {
+  font-weight: 500;
+  color: green;
+}
+
+.stock-change-negative {
+  color: rgb(185, 2, 2);
+}
+
 .stock-price-change {
-  margin-right: 0.5rem;
+  margin-right: 0.25rem;
 }
 
 /* stock info */
 
-.stock-info {
-  border-radius: 10px;
-  background-color: white;
-  padding: 2rem;
-  padding-right: 2rem;
-  height: 200px;
+.stock-additional-info {
+  display: flex;
+  width: 100%;
+  margin-top: 1rem;
+  margin-left: 1.25rem;
+  height: 60px;
+  justify-content: space-around;
+  color: grey;
+  /* border: 1px solid black; */
+  align-items: end;
+}
+.stock-additional {
+  font-weight: 500;
+  margin-right: 2rem;
+}
+.additional-title {
+  margin-right: 0.5rem;
 }
