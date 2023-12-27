@@ -292,9 +292,15 @@ p {
 .stock-chart {
 }
 
-.stock-title,
-.stock-price {
+.stock-main-info {
   margin-left: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.stock-title {
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: rgb(77, 76, 76);
 }
 
 .stock-price {
@@ -302,10 +308,8 @@ p {
   font-weight: 500;
 }
 
-.stock-title {
-  font-size: 1.75rem;
-  font-weight: 500;
-  color: rgb(77, 76, 76);
+.stock-price-change {
+  margin-right: 0.5rem;
 }
 
 /* stock info */

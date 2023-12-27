@@ -48,15 +48,43 @@ const Stock = ({ meta, values }) => {
     return `${month[item.getMonth()]} ${day}  ${time}`;
   };
 
+  console.log(values);
+
+  // const change = values[values.length - 1].close - values[0].close;
+  // const change = values[0].close - values[values.length - 1].close;
+  // const percentChange = (change / values[0].close) * 100;
+  // console.log(change, percentChange);
+
+  // Ensure that you're getting numerical values for the prices
+  const startPrice = parseFloat(values[values.length - 1].close); // Starting price
+  const endPrice = parseFloat(values[0].close); // Ending price
+
+  // Calculate the change in price
+  const priceChange = endPrice - startPrice;
+
+  // Calculate the percentage change
+  const percentChange = (priceChange / startPrice) * 100;
+
+  // Log the change and the percentage change, rounding the percentage to two decimal places
+  console.log(`Change: ${priceChange}`);
+  console.log(`Percentage Change: ${percentChange.toFixed(2)}%`);
+
   return (
     <div className="stock-container">
-      <div>
-        {meta && <div className="stock-title">{meta.symbol}</div>}
-        {values && (
-          <div className="stock-price">
-            {parseFloat(values[0].close).toFixed(2)}
-          </div>
-        )}
+      <div className="stock-main-info">
+        <div className="stock-title">{meta.symbol}</div>
+        <div className="stock-price">
+          {`${parseFloat(values[0].close).toFixed(2)} ${meta.currency}`}
+        </div>
+        <div className="stock-change">
+          <span className="stock-price-change">
+            {priceChange > 0 && "+"}
+            {priceChange.toFixed(2)}
+          </span>
+          <span className="stock-price-procent-change">{`(${percentChange.toFixed(
+            2
+          )}%)`}</span>
+        </div>
       </div>
       <div className="btn-container">
         <button
