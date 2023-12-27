@@ -4,14 +4,29 @@ import {
   MarkerType,
 } from "igniteui-react-charts";
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setTimePeriod, fetchStockData } from "./features/stock/stockSlice";
 
 IgrFinancialChartModule.register();
 
 const Stock = ({ meta, values }) => {
+  const { timeFrame } = useSelector((state) => state.stock);
   const dispatch = useDispatch();
   const [chartData, setChartData] = useState([]);
+  const month = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
 
   useEffect(() => {
     const processedData = values.map((item) => ({
@@ -20,6 +35,15 @@ const Stock = ({ meta, values }) => {
     }));
     setChartData(processedData);
   }, [values]);
+
+  const displayedDays = new Set();
+
+  const formatX = (item) => {
+    const day = item.getDate();
+    const time = `${item.getHours()}:${item.getMinutes()}`;
+
+    return `${month[item.getMonth()]} ${day}  `;
+  };
 
   return (
     <div className="stock-container">
@@ -103,8 +127,10 @@ const Stock = ({ meta, values }) => {
           thickness={2}
           titleAlignment="Left"
           yAxisMode="Numeric"
-          xAxisMode={"Time"}
-          // xAxisInverted={true}
+          xAxisMode={timeFrame === "5D" ? "Ordinal" : "Time"}
+          // xAxisFormatLabel={formatDateAsMonthAndYear}
+          xAxisFormatLabel={formatX}
+          xAxisInverted={timeFrame === "5D" ? true : false}
           dataSource={chartData}
           isToolbarVisible={false}
           markerTypes={[MarkerType.None]}
