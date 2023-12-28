@@ -51,13 +51,10 @@ export const fetchStockData = createAsyncThunk(
 export const searchStocks = createAsyncThunk(
   "stock/searchStocks",
   async (term) => {
-    if (term !== "") {
-      const response = await axios.get(
-        `/.netlify/functions/searchStocks?term=${term}`
-      );
-      return response.data;
-    }
-    return [];
+    const response = await axios.get(
+      `/.netlify/functions/searchStocks?term=${term}`
+    );
+    return response.data;
   }
 );
 

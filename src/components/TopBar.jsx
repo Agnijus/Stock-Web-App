@@ -13,6 +13,13 @@ const TopBar = () => {
   const dispatch = useDispatch();
   const inputRef = useRef();
 
+  const handleSearchOnChange = () => {
+    const term = inputRef.current.value;
+    if (term.length > 1) {
+      dispatch(searchStocks(term));
+    }
+  };
+
   return (
     <nav className="topbar-container">
       <div className="topbar-center">
@@ -27,7 +34,7 @@ const TopBar = () => {
               ref={inputRef}
               onFocus={() => dispatch(toggleSearch(true))}
               onBlur={() => dispatch(toggleSearch(false))}
-              onChange={() => dispatch(searchStocks(inputRef.current.value))}
+              onChange={handleSearchOnChange}
               className="search-bar"
               type="text"
             />
