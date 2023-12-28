@@ -167,7 +167,7 @@ p {
   justify-content: space-between; /* Distribute space between children */
 }
 .topbar-center {
-  flex-grow: 1; /* Allow this element to grow and take available space */
+  /* flex-grow: 1; Allow this element to grow and take available space */
 
   display: flex;
   align-items: center;
@@ -198,7 +198,7 @@ p {
   border-radius: var(--radius);
   border: 1px solid #ccc;
   flex-grow: 1;
-  width: 300px;
+  width: 100%;
   height: 28px;
   padding-left: 2rem;
   outline: none;
@@ -217,7 +217,6 @@ p {
   right: 1rem;
   font-size: 1.75rem;
   transform: rotate(30deg);
-  border: 1px solid black;
 }
 
 @media screen and (min-width: 800px) {
@@ -254,17 +253,27 @@ p {
 
 .search-overlay-container {
   position: absolute;
-  z-index: 20;
+  z-index: 25;
   width: 100%;
   height: 500px;
-  background: rgb(160, 160, 160, 0.7);
+  background-color: white;
+}
+.app-overlay {
+  position: absolute;
+  z-index: 19;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.search-bar-active {
+  z-index: 20;
 }
 
 /* home page */
 
 .homepage-container {
-  /* margin-top: 60px; */
-  height: 160vh;
+  height: 100vh;
   padding: 1rem;
   overflow: none;
   background-color: #f1f5f9;

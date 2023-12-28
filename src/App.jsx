@@ -6,16 +6,14 @@ import HomePage from "./components/HomePage";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { handleResize } from "./components/features/menu/menuSlice";
-import {
-  fetchStockData,
-  searchStocks,
-} from "./components/features/stock/stockSlice";
+import { fetchStockData } from "./components/features/stock/stockSlice";
 import WishList from "./components/WishList";
 import News from "./components/News";
 import Educational from "./components/Educational";
 
 function App() {
   const dispatch = useDispatch();
+  const { isSearchActive } = useSelector((state) => state.menu);
 
   useEffect(() => {
     dispatch(fetchStockData());
@@ -31,16 +29,19 @@ function App() {
   }, [dispatch]);
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<MainLayout />}>
-          <Route index element={<HomePage />} />
-          <Route path="/wishlist" element={<WishList />} />
-          <Route path="/news" element={<News />} />
-          <Route path="/educational" element={<Educational />} />
-        </Route>
-      </Routes>
-    </Router>
+    <>
+      {isSearchActive && <div className="app-overlay"></div>}
+      <Router>
+        <Routes>
+          <Route path="/" element={<MainLayout />}>
+            <Route index element={<HomePage />} />
+            <Route path="/wishlist" element={<WishList />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/educational" element={<Educational />} />
+          </Route>
+        </Routes>
+      </Router>
+    </>
   );
 }
 

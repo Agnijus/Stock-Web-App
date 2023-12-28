@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isSideBarOpened: window.innerWidth > 800,
   isManuallyClosed: false,
+  isSearchActive: false,
 };
 
 const menuSlice = createSlice({
@@ -18,9 +19,12 @@ const menuSlice = createSlice({
         state.isSideBarOpened = window.innerWidth > 800;
       }
     },
+    toggleSearch: (state, action) => {
+      state.isSearchActive = action.payload;
+    },
   },
 });
 
-export const { toggleSidebar, handleResize } = menuSlice.actions;
+export const { toggleSidebar, handleResize, toggleSearch } = menuSlice.actions;
 
 export default menuSlice.reducer;
