@@ -110,23 +110,40 @@ p {
 }
 
 .sidebar-center {
-  margin: 1rem;
   display: flex;
   flex-direction: column;
 }
 .sidebar-center header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 2rem;
+  height: 60px;
 }
 .title {
+  padding: 1rem;
   font-size: 1.7rem;
 }
 .link {
-  margin-bottom: 1rem;
-  color: black;
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  color: rgb(87, 86, 86);
+  transition: var(--transition);
+  font-size: 1.05rem;
+  letter-spacing: 1px;
 }
-
+.is-active {
+  background-color: #f1f5f9;
+}
+.link:hover {
+  transition: var(--transition);
+  background-color: #f1f5f9;
+}
+.link-icon {
+  font-size: 1.2rem;
+}
+.link-title {
+  margin-left: 0.35rem;
+}
 .right-side {
   flex-grow: 1;
   transition: var(--transition);
