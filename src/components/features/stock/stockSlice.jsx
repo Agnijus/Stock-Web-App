@@ -50,11 +50,14 @@ export const fetchStockData = createAsyncThunk(
 );
 export const searchStocks = createAsyncThunk(
   "stock/searchStocks",
-  async (_, { getState }) => {
-    const response = await axios.get(
-      "/.netlify/functions/searchStocks?term=tsla"
-    );
-    console.log(response);
+  async (term) => {
+    if (term !== "") {
+      const response = await axios.get(
+        `/.netlify/functions/searchStocks?term=${term}`
+      );
+      return response.data;
+    }
+    return [];
   }
 );
 
@@ -99,6 +102,7 @@ const initialState = {
   symbol: "tsla",
   timeFrame: "1D",
   interval: "5min",
+  searchData: {},
   data: {},
   loading: false,
   error: null,
@@ -126,10 +130,13 @@ const stockSlice = createSlice({
       .addCase(fetchStockData.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
+      })
+      .addCase(searchStocks.fulfilled, (state, action) => {
+        state.searchData = action.payload;
       });
   },
 });
 
-export const { setTimePeriod } = stockSlice.actions;
+export const { setTimePeriod, setSearchTerm } = stockSlice.actions;
 
 export default stockSlice.reducer;

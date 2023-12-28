@@ -11,7 +11,7 @@ const MainLayout = () => {
       <Sidebar />
       <div className={`right-side ${isSideBarOpened ? "active" : ""}`}>
         <TopBar />
-        <Outlet style={{ marginTop: "60px" }} />
+        <Outlet />
       </div>
     </main>
   );

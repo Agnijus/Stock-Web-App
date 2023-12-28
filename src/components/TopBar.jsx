@@ -3,9 +3,13 @@ import { MdModeNight } from "react-icons/md";
 import { IoIosSearch } from "react-icons/io";
 import { useDispatch } from "react-redux";
 import { toggleSidebar } from "./features/menu/menuSlice";
+import { searchStocks, setSearchTerm } from "./features/stock/stockSlice";
+import { useRef } from "react";
+import SearchOverlay from "./SearchOverlay";
 
 const TopBar = () => {
   const dispatch = useDispatch();
+  const inputRef = useRef();
 
   return (
     <nav className="topbar-container">
@@ -15,9 +19,15 @@ const TopBar = () => {
             onClick={() => dispatch(toggleSidebar())}
             className="menu"
           />
-          <form className="search-form" action="">
+          <form onSubmit={() => dispatch()} className="search-form" action="">
             <IoIosSearch className="search-icon" />
-            <input className="search-bar" type="text" />
+            <input
+              ref={inputRef}
+              onChange={() => dispatch(searchStocks(inputRef.current.value))}
+              className="search-bar"
+              type="text"
+            />
+            {/* <SearchOverlay /> */}
           </form>
         </div>
         <MdModeNight className="theme-toggle" />

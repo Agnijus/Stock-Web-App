@@ -19,7 +19,6 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchStockData());
-    dispatch(searchStocks());
   }, []);
 
   useEffect(() => {
