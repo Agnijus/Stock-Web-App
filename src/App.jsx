@@ -1,6 +1,8 @@
-import Sidebar from "./components/Sidebar";
-import TopBar from "./components/TopBar";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import MainLayout from "./components/MainLayout";
+
 import Overview from "./components/Overview";
+
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { handleResize } from "./components/features/menu/menuSlice";
@@ -8,10 +10,12 @@ import {
   fetchStockData,
   searchStocks,
 } from "./components/features/stock/stockSlice";
+import WishList from "./components/WishList";
+import News from "./components/News";
+import Educational from "./components/Educational";
 
 function App() {
   const dispatch = useDispatch();
-  const { isSideBarOpened } = useSelector((state) => state.menu);
 
   useEffect(() => {
     dispatch(fetchStockData());
@@ -28,13 +32,16 @@ function App() {
   }, [dispatch]);
 
   return (
-    <main className="app">
-      <Sidebar />
-      <div className={`right-side ${isSideBarOpened ? "active" : ""}`}>
-        <TopBar />
-        <Overview />
-      </div>
-    </main>
+    <Router>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<Overview />} />
+          <Route path="/wishlist" element={<WishList />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/educational" element={<Educational />} />
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 

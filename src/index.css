@@ -124,6 +124,7 @@ p {
 }
 .link {
   margin-bottom: 1rem;
+  color: black;
 }
 
 .right-side {
@@ -350,4 +351,13 @@ p {
     font-size: 0.9rem;
     padding: 0 2rem;
   }
+}
+
+/* wishlist page */
+
+.wishlist-container {
+  margin-top: 60px;
+  height: 120vh;
+  padding: 1rem;
+  background-color: #f1f5f9;
 }

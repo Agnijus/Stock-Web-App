@@ -1,6 +1,7 @@
 import { IoClose } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleSidebar } from "./features/menu/menuSlice";
+import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -16,10 +17,18 @@ const Sidebar = () => {
             onClick={() => dispatch(toggleSidebar())}
           />
         </header>
-        <div className="link">Overview</div>
-        <div className="link">WishList</div>
-        <div className="link">News</div>
-        <div className="link">Educational</div>
+        <NavLink className="link" to="/">
+          Home
+        </NavLink>
+        <NavLink className="link" to="/wishlist">
+          WishList
+        </NavLink>
+        <NavLink className="link" to="/news">
+          News
+        </NavLink>
+        <NavLink className="link" to="/educational">
+          Educational
+        </NavLink>
       </div>
     </aside>
   );
