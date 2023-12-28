@@ -66,7 +66,6 @@ export const searchStocks = createAsyncThunk(
 //       const { data } = await customFetch.get(`/stocks`);
 //       console.log("Fetched stock data:", data);
 
-//       // Function to send a batch of data
 //       const sendBatch = async (batch) => {
 //         try {
 //           const response = await axios.post(
@@ -75,28 +74,23 @@ export const searchStocks = createAsyncThunk(
 //           );
 //           return response.data;
 //         } catch (error) {
-//           console.error("Error in sending batch:", error);
-//           throw error; // Rethrow to handle in the main try-catch
+//           console.error("Error sending batch: ", error);
+//           throw error;
 //         }
 //       };
 
-//       // Define batch size
 //       const batchSize = 250; // Adjust batch size as needed
 
-//       // Process data in batches
 //       for (let i = 0; i < data.data.length; i += batchSize) {
 //         const batch = data.data.slice(i, i + batchSize);
 //         const batchResponse = await sendBatch(batch);
 //         console.log(
-//           `Batch response for batch starting at index ${i}:`,
-//           batchResponse
+//           `Batch index ${i}:`,
 //         );
 //       }
-
-//       // Complete message
-//       console.log("All batches processed successfully");
+//       console.log("All batches inserted");
 //     } catch (error) {
-//       console.error("Error updating stocks:", error);
+//       console.error("Error inserting batch: ", error);
 //     }
 //   }
 // );

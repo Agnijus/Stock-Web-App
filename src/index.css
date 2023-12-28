@@ -223,15 +223,14 @@ p {
 .overview-container {
   margin-top: 60px;
   height: 120vh;
-  padding: 0.5rem;
-  padding-top: 1rem;
+  padding: 1rem;
   background-color: #f1f5f9;
 }
 
 .stock-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 1rem;
+  /* display: grid; */
+  /* grid-template-columns: 1fr;
+  grid-gap: 1rem; */
 }
 
 @media screen and (min-width: 600px) {
@@ -242,7 +241,7 @@ p {
     background-color: #f1f5f9;
   }
 }
-@media screen and (min-width: 1100px) {
+/* @media screen and (min-width: 1100px) {
   .stock-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -256,7 +255,7 @@ p {
   .stock-grid {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
-}
+}  */
 
 /* stock container */
 
@@ -272,24 +271,17 @@ p {
   margin-left: 1.25rem;
 }
 
-/* .stock-container .btn:first-child {
-  padding-left: 0;
-} */
-
 .stock-container .btn {
   padding: 0.25rem 0.5rem;
-  background: rgba(175, 170, 170, 0.959);
   border: none;
-  /* border-right: 1px solid grey; */
   cursor: pointer;
   margin-right: 0.5rem;
   border-radius: var(--radius);
   color: white;
+  background: rgba(155, 154, 154, 0.959);
 }
-/* .stock-container .btn:last-child {
-  border-right: none;
-} */
-.stock-chart {
+.btn-active {
+  background: rgba(102, 101, 101, 0.959) !important;
 }
 
 .stock-main-info {
@@ -330,17 +322,32 @@ p {
   display: flex;
   width: 100%;
   margin-top: 1rem;
-  margin-left: 1.25rem;
-  height: 60px;
+  margin-left: 0.75rem;
+  height: 55px;
   justify-content: space-around;
   color: grey;
-  /* border: 1px solid black; */
   align-items: end;
 }
 .stock-additional {
   font-weight: 500;
-  margin-right: 2rem;
+  font-size: 0.9rem;
+  padding: 0 1rem;
+}
+.stock-additional:nth-child(2) {
+  border-left: 1px solid rgb(189, 185, 185);
+  border-right: 1px solid rgb(189, 185, 185);
 }
 .additional-title {
-  margin-right: 0.5rem;
+  margin-right: 2rem;
+}
+@media screen and (min-width: 600px) {
+  .stock-additional-info {
+    justify-content: center;
+    margin-left: 0;
+  }
+  .stock-additional {
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 0 2rem;
+  }
 }

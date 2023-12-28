@@ -48,12 +48,14 @@ const Stock = ({ meta, values }) => {
     return `${month[item.getMonth()]} ${day}  ${time}`;
   };
 
+  const setButtonClass = (buttonTimeFrame) => {
+    return `btn ${timeFrame === buttonTimeFrame ? "btn-active" : ""}`;
+  };
+
   const startPrice = parseFloat(values[values.length - 1].close);
   const endPrice = parseFloat(values[0].close);
   const priceChange = endPrice - startPrice;
   const percentChange = (priceChange / startPrice) * 100;
-
-  console.log(values);
 
   return (
     <div className="stock-container">
@@ -85,7 +87,7 @@ const Stock = ({ meta, values }) => {
             dispatch(setTimePeriod({ timeFrame: "1D", interval: "5min" }));
             dispatch(fetchStockData());
           }}
-          className="btn"
+          className={setButtonClass("1D")}
           type="button"
         >
           1D
@@ -95,7 +97,7 @@ const Stock = ({ meta, values }) => {
             dispatch(setTimePeriod({ timeFrame: "5D", interval: "30min" }));
             dispatch(fetchStockData());
           }}
-          className="btn"
+          className={setButtonClass("5D")}
           type="button"
         >
           5D
@@ -105,7 +107,7 @@ const Stock = ({ meta, values }) => {
             dispatch(setTimePeriod({ timeFrame: "1M", interval: "1day" }));
             dispatch(fetchStockData());
           }}
-          className="btn"
+          className={setButtonClass("1M")}
           type="button"
         >
           1M
@@ -115,7 +117,7 @@ const Stock = ({ meta, values }) => {
             dispatch(setTimePeriod({ timeFrame: "6M", interval: "1day" }));
             dispatch(fetchStockData());
           }}
-          className="btn"
+          className={setButtonClass("6M")}
           type="button"
         >
           6M
@@ -125,7 +127,7 @@ const Stock = ({ meta, values }) => {
             dispatch(setTimePeriod({ timeFrame: "YTD", interval: "1day" }));
             dispatch(fetchStockData());
           }}
-          className="btn"
+          className={setButtonClass("YTD")}
           type="button"
         >
           YTD
@@ -135,7 +137,7 @@ const Stock = ({ meta, values }) => {
             dispatch(setTimePeriod({ timeFrame: "1Y", interval: "1day" }));
             dispatch(fetchStockData());
           }}
-          className="btn"
+          className={setButtonClass("1Y")}
           type="button"
         >
           1Y
@@ -174,18 +176,18 @@ const Stock = ({ meta, values }) => {
         />
       </div>
       <div className="stock-additional-info">
-        <span className="stock-additional">
+        <div className="stock-additional">
           <span className="additional-title">Open</span>
           {parseFloat(values[0].open).toFixed(2)}
-        </span>
-        <span className="stock-additional">
+        </div>
+        <div className="stock-additional">
           <span className="additional-title">High</span>
           {parseFloat(values[0].high).toFixed(2)}
-        </span>
-        <span className="stock-additional">
+        </div>
+        <div className="stock-additional">
           <span className="additional-title">Low</span>
           {parseFloat(values[0].low).toFixed(2)}
-        </span>
+        </div>
       </div>
     </div>
   );
