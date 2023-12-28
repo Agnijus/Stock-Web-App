@@ -319,6 +319,10 @@ p {
 .stock-price-change {
   margin-right: 0.25rem;
 }
+.stock-arrow {
+  margin-left: 0.1rem;
+  font-size: 0.75rem;
+}
 
 /* stock info */
 

@@ -6,6 +6,8 @@ import {
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setTimePeriod, fetchStockData } from "./features/stock/stockSlice";
+import { FaArrowDown } from "react-icons/fa6";
+import { FaArrowUp } from "react-icons/fa6";
 
 IgrFinancialChartModule.register();
 
@@ -69,9 +71,12 @@ const Stock = ({ meta, values }) => {
             {priceChange > 0 && "+"}
             {priceChange.toFixed(2)}
           </span>
-          <span className="stock-price-procent-change">{`(${percentChange.toFixed(
-            2
-          )}%)`}</span>
+          <span className="stock-price-procent-change">
+            {`(${percentChange.toFixed(2)}%)`}
+          </span>
+          <span className="stock-arrow">
+            {priceChange > 0 ? <FaArrowUp /> : <FaArrowDown />}
+          </span>
         </div>
       </div>
       <div className="btn-container">
