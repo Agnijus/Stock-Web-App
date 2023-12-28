@@ -219,9 +219,9 @@ p {
   }
 }
 
-/* overview page */
+/* home page */
 
-.overview-container {
+.homepage-container {
   margin-top: 60px;
   height: 120vh;
   padding: 1rem;
@@ -235,7 +235,7 @@ p {
 }
 
 @media screen and (min-width: 600px) {
-  .overview-container {
+  .homepage-container {
     margin-top: 60px;
     height: 120vh;
     padding: 2rem;
@@ -356,6 +356,24 @@ p {
 /* wishlist page */
 
 .wishlist-container {
+  margin-top: 60px;
+  height: 120vh;
+  padding: 1rem;
+  background-color: #f1f5f9;
+}
+
+/* news page */
+
+.news-container {
+  margin-top: 60px;
+  height: 120vh;
+  padding: 1rem;
+  background-color: #f1f5f9;
+}
+
+/* educational page */
+
+.educational-container {
   margin-top: 60px;
   height: 120vh;
   padding: 1rem;

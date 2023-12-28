@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import MainLayout from "./components/MainLayout";
 
-import Overview from "./components/Overview";
+import HomePage from "./components/HomePage";
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -35,7 +35,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<MainLayout />}>
-          <Route index element={<Overview />} />
+          <Route index element={<HomePage />} />
           <Route path="/wishlist" element={<WishList />} />
           <Route path="/news" element={<News />} />
           <Route path="/educational" element={<Educational />} />

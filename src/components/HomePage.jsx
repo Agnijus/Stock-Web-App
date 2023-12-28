@@ -13,7 +13,7 @@ const Overview = () => {
   }
 
   return (
-    <section className="overview-container">
+    <section className="homepage-container">
       <div className="stock-grid">
         <Stock {...data} />
       </div>

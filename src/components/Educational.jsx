@@ -1,4 +1,4 @@
 const Educational = () => {
-  return <div>Educational</div>;
+  return <section className="educational-container">Educational</section>;
 };
 export default Educational;
