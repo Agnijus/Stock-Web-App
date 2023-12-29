@@ -29,19 +29,16 @@ function App() {
   }, [dispatch]);
 
   return (
-    <>
-      {isSearchActive && <div className="app-overlay"></div>}
-      <Router>
-        <Routes>
-          <Route path="/" element={<MainLayout />}>
-            <Route index element={<HomePage />} />
-            <Route path="/wishlist" element={<WishList />} />
-            <Route path="/news" element={<News />} />
-            <Route path="/educational" element={<Educational />} />
-          </Route>
-        </Routes>
-      </Router>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="/wishlist" element={<WishList />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/educational" element={<Educational />} />
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 

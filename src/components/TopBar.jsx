@@ -28,18 +28,22 @@ const TopBar = () => {
             onClick={() => dispatch(toggleSidebar())}
             className="menu"
           />
-          <form onSubmit={() => dispatch()} className="search-form" action="">
+          <form
+            onSubmit={() => dispatch()}
+            className="search-form search-form-active"
+            action=""
+          >
             <IoIosSearch className="search-icon" />
             <input
               ref={inputRef}
               onFocus={() => dispatch(toggleSearch(true))}
               onBlur={() => dispatch(toggleSearch(false))}
               onChange={handleSearchOnChange}
-              className="search-bar"
+              className={`search-bar ${
+                isSearchActive ? "search-bar-active" : ""
+              }`}
               type="text"
             />
-            {/* <div className="search-overlay-shadow"></div> */}
-            {isSearchActive && <SearchOverlay />}
           </form>
         </div>
         <MdModeNight className="theme-toggle" />
