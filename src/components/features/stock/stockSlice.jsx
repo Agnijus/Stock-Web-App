@@ -103,8 +103,8 @@ const initialState = {
   symbol: "tsla",
   timeFrame: "1D",
   interval: "5min",
-  searchData: {},
-  data: {},
+  searchData: [],
+  data: [],
   loading: false,
   error: null,
 };
@@ -118,7 +118,7 @@ const stockSlice = createSlice({
       state.interval = action.payload.interval;
     },
     clearSearchData: (state) => {
-      state.searchData = {};
+      state.searchData = [];
     },
   },
   extraReducers: (builder) => {
@@ -141,7 +141,6 @@ const stockSlice = createSlice({
   },
 });
 
-export const { setTimePeriod, setSearchTerm, clearSearchData } =
-  stockSlice.actions;
+export const { setTimePeriod, clearSearchData } = stockSlice.actions;
 
 export default stockSlice.reducer;
