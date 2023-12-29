@@ -26,12 +26,7 @@ const SearchOverlay = () => {
   };
 
   useEffect(() => {
-    console.log("Updated searchData:", searchData);
-  }, [searchData]); // Dependency on searchData
-
-  useEffect(() => {
     dispatch(clearSearchData());
-
     const handleClickOutside = (event) => {
       if (overlayRef.current && !overlayRef.current.contains(event.target)) {
         dispatch(toggleSearch(false));
@@ -62,11 +57,7 @@ const SearchOverlay = () => {
           searchData.map((stock) => {
             const { id, symbol, exchange, name } = stock;
             return (
-              <div
-                onClick={() => console.log("clicked: " + symbol)}
-                key={id}
-                className="stock-single-result"
-              >
+              <div key={id} className="stock-single-result">
                 <div className="result-top-line">
                   <span className="result-symbol">{symbol}</span>
                   <span className="result-exchange">{exchange}</span>
