@@ -63,8 +63,14 @@ export const searchStocks = createAsyncThunk(
 //   async (_, { getState }) => {
 //     try {
 //       // Fetch the stock data
-//       const { data } = await customFetch.get(`/stocks`);
-//       console.log("Fetched stock data:", data);
+//       const { data } = await customFetch.get(`/stocks?show_plan=true`);
+
+//       // Filter stocks with plan "Basic"
+//       const basicPlanStocks = data.data
+//         .filter((item) => item.access && item.access.plan === "Basic")
+//         .map(({ access, ...rest }) => rest);
+
+//       console.log(basicPlanStocks);
 
 //       const sendBatch = async (batch) => {
 //         try {
@@ -79,14 +85,12 @@ export const searchStocks = createAsyncThunk(
 //         }
 //       };
 
-//       const batchSize = 250; // Adjust batch size as needed
+//       const batchSize = 250;
 
-//       for (let i = 0; i < data.data.length; i += batchSize) {
-//         const batch = data.data.slice(i, i + batchSize);
-//         const batchResponse = await sendBatch(batch);
-//         console.log(
-//           `Batch index ${i}:`,
-//         );
+//       for (let i = 0; i < basicPlanStocks.length; i += batchSize) {
+//         const batch = basicPlanStocks.slice(i, i + batchSize);
+//         await sendBatch(batch);
+//         console.log(`Batch index ${i}:`);
 //       }
 //       console.log("All batches inserted");
 //     } catch (error) {
@@ -113,6 +117,9 @@ const stockSlice = createSlice({
       state.timeFrame = action.payload.timeFrame;
       state.interval = action.payload.interval;
     },
+    clearSearchData: (state) => {
+      state.searchData = {};
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -134,6 +141,7 @@ const stockSlice = createSlice({
   },
 });
 
-export const { setTimePeriod, setSearchTerm } = stockSlice.actions;
+export const { setTimePeriod, setSearchTerm, clearSearchData } =
+  stockSlice.actions;
 
 export default stockSlice.reducer;

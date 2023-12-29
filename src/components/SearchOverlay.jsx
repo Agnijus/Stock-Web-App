@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useRef, useEffect } from "react";
 import { toggleSearch } from "./features/menu/menuSlice";
 import { IoIosSearch } from "react-icons/io";
-import { searchStocks } from "./features/stock/stockSlice";
+import { clearSearchData, searchStocks } from "./features/stock/stockSlice";
 
 const SearchOverlay = () => {
   const { searchData } = useSelector((state) => state.stock);
@@ -287,11 +287,17 @@ const SearchOverlay = () => {
   const handleSearchOnChange = () => {
     const term = inputRef.current.value;
     if (term.length > 1) {
-      // dispatch(searchStocks(term));
+      dispatch(searchStocks(term));
       console.log(term);
-      // console.log(searchData);
+    } else {
+      dispatch(clearSearchData());
     }
   };
+
+  useEffect(() => {
+    console.log("Updated searchData:", searchData);
+  }, [searchData]); // Dependency on searchData
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (overlayRef.current && !overlayRef.current.contains(event.target)) {
@@ -314,14 +320,20 @@ const SearchOverlay = () => {
       <input
         ref={inputRef}
         onChange={handleSearchOnChange}
-        className="search-bar-overlay-container"
+        className={`search-bar-overlay-container ${
+          !searchData.length > 0 ? "search-no-results" : ""
+        } `}
       ></input>
       <div className="search-results-container">
-        {testSearchData.length > 0 &&
-          testSearchData.map((stock) => {
+        {searchData.length > 0 &&
+          searchData.map((stock) => {
             const { id, symbol, exchange, name } = stock;
             return (
-              <div key={id} className="stock-single-result">
+              <div
+                onClick={() => console.log("clicked: " + symbol)}
+                key={id}
+                className="stock-single-result"
+              >
                 <div className="result-top-line">
                   <span className="result-symbol">{symbol}</span>
                   <span className="result-exchange">{exchange}</span>
