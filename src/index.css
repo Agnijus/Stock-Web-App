@@ -272,8 +272,9 @@ p {
   height: 50px;
   padding-left: 3rem;
   border: none;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid rgba(192, 189, 189, 0.904);
   outline: none;
+  border-radius: 0.25rem 0.25rem 0 0;
 }
 
 .overlay-search-icon {
