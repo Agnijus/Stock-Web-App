@@ -257,44 +257,42 @@ p {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* .search-bar-overlay-container {
+.overlay-search-form {
   position: fixed;
-  z-index: 30;
-  width: auto;
-  max-width: 800px;
-  left: 0;
-  right: 0;
-  margin: auto;
-  height: 100px;
   top: 100px;
-  background-color: white;
-  margin: 0 2rem;
-  border-radius: var(--radius);
-} */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+  width: 80%;
+  max-width: 800px;
+}
 
 .search-bar-overlay-container {
-  position: fixed;
-  z-index: 30;
-  top: 100px; /* Distance from the top */
-  left: 50%; /* Center horizontally */
-  right: -64px;
-  transform: translateX(-50%); /* Offset the element left by half its width */
-  max-width: 800px; /* Maximum width */
-  width: auto; /* Adjust width automatically */
-  height: 100px;
-  background-color: white;
-  border-radius: 0.25rem 0.25rem 0 0;
+  width: 100%;
+  height: 50px;
+  padding-left: 3rem;
+  border: none;
+  border-bottom: 1px solid grey;
+  outline: none;
+}
+
+.overlay-search-icon {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  color: #b4b2b2;
+  font-size: 1.25rem;
 }
 
 .search-overlay-container {
   position: fixed;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 30;
-  top: 200px; /* Distance from the top */
-  left: 50%; /* Center horizontally */
-  right: -64px;
-  transform: translateX(-50%); /* Offset the element left by half its width */
-  max-width: 800px; /* Maximum width */
-  width: auto; /* Adjust width automatically */
+  width: 100%;
+  max-width: 800px;
   height: 500px;
   background-color: white;
   border-radius: 0 0 0.25rem 0.25rem;

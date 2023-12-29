@@ -37,7 +37,6 @@ const TopBar = () => {
             <input
               ref={inputRef}
               onFocus={() => dispatch(toggleSearch(true))}
-              onBlur={() => dispatch(toggleSearch(false))}
               onChange={handleSearchOnChange}
               className={`search-bar ${
                 isSearchActive ? "search-bar-active" : ""
