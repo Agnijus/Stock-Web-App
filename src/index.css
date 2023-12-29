@@ -301,11 +301,37 @@ p {
   padding: 1rem;
   padding-top: 0;
   overflow-y: scroll;
+
+  scrollbar-width: thin;
+  scrollbar-color: #b8b7b7 #f1f1f1;
+}
+
+.search-results-container::-webkit-scrollbar {
+  width: 7px;
+}
+
+.search-results-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+.search-results-container::-webkit-scrollbar-thumb {
+  background: #bdbdbd;
+  border-radius: 10px;
+}
+
+.search-results-container::-webkit-scrollbar-thumb:hover {
+  background: #acacac;
 }
 
 .stock-single-result {
-  border-top: 1px solid rgb(184, 181, 181, 0.8);
+  border-top: 1px solid rgb(184, 181, 181, 0.4);
   padding: 0.5rem 0;
+}
+.stock-single-result:first-child {
+  border-top: none;
+  padding-top: 0;
 }
 .result-symbol {
   font-weight: 500;

@@ -10,7 +10,7 @@ const MainLayout = () => {
   );
 
   return (
-    <main className="app">
+    <main className="app" style={{ scroll: "hidden" }}>
       {isSearchActive && (
         <div className="app-overlay">
           <SearchOverlay />
