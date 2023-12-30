@@ -4,8 +4,21 @@ import { useSelector } from "react-redux";
 const Overview = () => {
   const { data, loading, error } = useSelector((state) => state.stock);
 
-  if (loading || !data.meta || !data.values) {
+  if (loading) {
     return <div>Loading...</div>;
+  } else if (
+    !data ||
+    data.code === 400 ||
+    !data.meta ||
+    !data.values ||
+    data.values.length <= 1
+  ) {
+    return (
+      <div className="not-enough-data">
+        No sufficient trading data available for {data?.meta?.symbol}
+        {data?.meta?.exchange}.
+      </div>
+    );
   }
 
   if (error) {

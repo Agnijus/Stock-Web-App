@@ -12,6 +12,7 @@ import { FaArrowUp } from "react-icons/fa6";
 IgrFinancialChartModule.register();
 
 const Stock = ({ meta, values }) => {
+  console.log(meta, values);
   const { timeFrame } = useSelector((state) => state.stock);
   const dispatch = useDispatch();
   const [chartData, setChartData] = useState([]);

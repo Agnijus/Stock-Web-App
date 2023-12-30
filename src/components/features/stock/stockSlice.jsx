@@ -11,13 +11,18 @@ export const fetchStockData = createAsyncThunk(
   async (_, { getState }) => {
     const { stock } = getState();
 
-    const { data } = await customFetch.get(`/quote?symbol=${stock.symbol}`);
+    const symbolExchange = encodeURIComponent(
+      `${stock.symbol}:${stock.exchange}`
+    );
+
+    const { data } = await customFetch.get(`/quote?symbol=${symbolExchange}`);
     let startDate = new Date(data.datetime);
+    console.log(data);
 
     switch (stock.timeFrame) {
       case "1D":
         const response = await customFetch.get(
-          `/time_series?symbol=${stock.symbol}&interval=${stock.interval}&date=${data.datetime}`
+          `/time_series?symbol=${symbolExchange}&interval=${stock.interval}&date=${data.datetime}`
         );
         return response.data;
       case "5D":
@@ -42,8 +47,9 @@ export const fetchStockData = createAsyncThunk(
         startDate = formatDate(startDate);
         break;
     }
+
     const response = await customFetch.get(
-      `/time_series?symbol=${stock.symbol}&interval=${stock.interval}&start_date=${startDate}&end_date=${data.datetime}`
+      `/time_series?symbol=${symbolExchange}&interval=${stock.interval}&start_date=${startDate}&end_date=${data.datetime}`
     );
     return response.data;
   }
@@ -100,7 +106,8 @@ export const searchStocks = createAsyncThunk(
 // );
 
 const initialState = {
-  symbol: "tsla",
+  symbol: "",
+  exchange: "",
   timeFrame: "1D",
   interval: "5min",
   searchData: [],
@@ -119,6 +126,10 @@ const stockSlice = createSlice({
     },
     clearSearchData: (state) => {
       state.searchData = [];
+    },
+    setStock: (state, action) => {
+      state.symbol = action.payload.symbol;
+      state.exchange = action.payload.exchange;
     },
   },
   extraReducers: (builder) => {
@@ -141,6 +152,6 @@ const stockSlice = createSlice({
   },
 });
 
-export const { setTimePeriod, clearSearchData } = stockSlice.actions;
+export const { setTimePeriod, setStock, clearSearchData } = stockSlice.actions;
 
 export default stockSlice.reducer;

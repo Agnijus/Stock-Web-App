@@ -2,7 +2,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { useRef, useEffect } from "react";
 import { toggleSearch } from "./features/menu/menuSlice";
 import { IoIosSearch } from "react-icons/io";
-import { clearSearchData, searchStocks } from "./features/stock/stockSlice";
+import {
+  clearSearchData,
+  searchStocks,
+  setStock,
+  setTimePeriod,
+  fetchStockData,
+} from "./features/stock/stockSlice";
 import { debounce } from "lodash";
 
 const SearchOverlay = () => {
@@ -23,6 +29,13 @@ const SearchOverlay = () => {
   const handleSearchOnChange = () => {
     const term = inputRef.current.value;
     debouncedSearchStocks(term);
+  };
+
+  const handleSelect = (symbol, exchange) => {
+    dispatch(toggleSearch(false));
+    dispatch(setStock({ symbol: symbol, exchange: exchange }));
+    dispatch(setTimePeriod({ timeFrame: "1D", interval: "5min" }));
+    dispatch(fetchStockData());
   };
 
   useEffect(() => {
@@ -57,7 +70,11 @@ const SearchOverlay = () => {
           searchData.map((stock) => {
             const { id, symbol, exchange, name } = stock;
             return (
-              <div key={id} className="stock-single-result">
+              <div
+                onClick={() => handleSelect(symbol, exchange)}
+                key={id}
+                className="stock-single-result"
+              >
                 <div className="result-top-line">
                   <span className="result-symbol">{symbol}</span>
                   <span className="result-exchange">{exchange}</span>
