@@ -419,11 +419,11 @@ Single Stock
 }
 .add-to-wishlist-icon {
   font-size: 1.5rem;
-  color: rgb(117, 104, 25);
+  color: grey;
   cursor: pointer;
 }
 .add-to-wishlist-icon:hover {
-  color: rgb(204, 184, 57);
+  color: rgba(224, 191, 3, 0.7);
 }
 
 .stock-title {
@@ -495,8 +495,8 @@ Wishlist Page
 
 .wishlist-grid {
   display: grid;
-  grid-gap: 2rem;
-  padding: 2rem;
+  grid-gap: 1rem;
+  padding: 1rem;
   background-color: #f1f5f9;
 }
 
@@ -506,9 +506,20 @@ Wishlist Page
   background-color: white;
   padding: 1rem;
   border-radius: 0.75rem;
+  cursor: pointer;
+  transition: var(--transition);
 }
 .wishlist-item:hover {
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.08), 0 3px 3px 0 rgba(0, 0, 0, 0.06);
+  transition: var(--transition);
 }
+
+.wishlist-top-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .wishlist-symbol,
 .wishlist-exchange,
 .wishlist-close {
@@ -516,17 +527,25 @@ Wishlist Page
 }
 
 .wishlist-name {
-  font-size: 1.25rem;
+  font-size: 0.95rem;
   font-weight: 500;
   margin-right: 0.5rem;
 }
 .wishlist-symbol-exchange {
   color: grey;
 }
+.wishlist-icon {
+  font-size: 1.25rem;
+  color: rgba(224, 191, 3, 0.7);
+}
+.wishlist-icon:hover {
+  font-size: 1.25rem;
+  color: grey;
+}
 .wishlist-close,
 .wishlist-currency {
   font-weight: 500;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 .wishlist-close {
   margin-right: 0.25rem;
@@ -535,7 +554,7 @@ Wishlist Page
   display: flex;
   align-items: center;
   color: #2a9c29;
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 500;
 }
 .wishlist-change-negative {
@@ -550,35 +569,19 @@ Wishlist Page
 .wishlist-arrow {
   font-size: 0.85rem;
 }
-/* <div key={key} className="wishlist-item">
-            <div>
-              <span className="wishlist-symbol">{symbol}:</span>
-              <span className="wishlist-exchange">{exchange}</span>
-            </div>
-            <div>
-              <span className="wishlist-close">
-                {parseFloat(close).toFixed(2)}
-              </span>
-              <span className="wishlist-currency">{currency}</span>
-            </div>
-            <div className="wishlist-change">
-              <span className="wishlist-change-value">
-                {parseFloat(change).toFixed(2)}
-              </span>
-              <span className="wishlist-percent-change">{`(${parseFloat(
-                percent_change
-              ).toFixed(2)}%)`}</span>
-            </div>
-         </div> */
-
 @media screen and (min-width: 600px) {
   .wishlist-grid {
     grid-template-columns: 1fr 1fr;
   }
 }
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1100px) {
   .wishlist-grid {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media screen and (min-width: 1500px) {
+  .wishlist-grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 
