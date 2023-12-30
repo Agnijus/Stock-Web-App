@@ -42,16 +42,23 @@ const WishList = () => {
                 {`${symbol}: ${exchange}`}
               </span>
             </div>
+
             <div>
               <span className="wishlist-close">
                 {parseFloat(close).toFixed(2)}
               </span>
               <span className="wishlist-currency">{currency}</span>
             </div>
-            <div className="wishlist-change wishlist-change-negative">
+
+            <div
+              className={`wishlist-change ${
+                change < 0 ? "wishlist-change-negative" : ""
+              }`}
+            >
               <div className="wishlist-change-value">
                 {parseFloat(change).toFixed(2)}
               </div>
+
               <div className="wishlist-percent-change">{`(${parseFloat(
                 percent_change
               ).toFixed(2)}%)`}</div>

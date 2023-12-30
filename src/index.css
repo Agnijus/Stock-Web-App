@@ -498,7 +498,6 @@ Wishlist Page
   grid-gap: 2rem;
   padding: 2rem;
   background-color: #f1f5f9;
-  grid-auto-rows: minmax(150px, auto);
 }
 
 .wishlist-item {
