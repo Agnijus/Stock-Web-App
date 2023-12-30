@@ -14,9 +14,7 @@ import Educational from "./components/Educational";
 function App() {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchStockData());
-  }, []);
+  useEffect(() => {}, []);
 
   useEffect(() => {
     const resizeHandler = () => {

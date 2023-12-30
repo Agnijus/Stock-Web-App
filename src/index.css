@@ -412,6 +412,20 @@ Single Stock
   margin-bottom: 0.5rem;
 }
 
+.stock-top-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.add-to-wishlist-icon {
+  font-size: 1.5rem;
+  color: rgb(117, 104, 25);
+  cursor: pointer;
+}
+.add-to-wishlist-icon:hover {
+  color: rgb(204, 184, 57);
+}
+
 .stock-title {
   font-size: 1.75rem;
   font-weight: 500;

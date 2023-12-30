@@ -112,6 +112,7 @@ const initialState = {
   interval: "5min",
   searchData: [],
   data: [],
+  wishList: [],
   loading: false,
   error: null,
 };
@@ -130,6 +131,31 @@ const stockSlice = createSlice({
     setStock: (state, action) => {
       state.symbol = action.payload.symbol;
       state.exchange = action.payload.exchange;
+    },
+    updateWishList: (state, action) => {
+      const myEntry = {
+        symbol: action.payload.symbol,
+        exchange: action.payload.exchange,
+      };
+      const wishListData = localStorage.getItem("wishlist");
+      const wishListArray = wishListData ? JSON.parse(wishListData) : [];
+
+      const currentIndex = wishListArray.findIndex(
+        (item) =>
+          item.symbol === myEntry.symbol && item.exchange === myEntry.exchange
+      );
+
+      if (currentIndex >= 0) {
+        wishListArray.splice(currentIndex, 1);
+      } else {
+        wishListArray.push(myEntry);
+      }
+      const updatedWishList = JSON.stringify(wishListArray);
+      localStorage.setItem("wishlist", updatedWishList);
+    },
+    getWishList: (state, action) => {
+      const storedData = localStorage.getItem("wishlist");
+      state.wishList = storedData;
     },
   },
   extraReducers: (builder) => {
@@ -152,6 +178,12 @@ const stockSlice = createSlice({
   },
 });
 
-export const { setTimePeriod, setStock, clearSearchData } = stockSlice.actions;
+export const {
+  setTimePeriod,
+  setStock,
+  clearSearchData,
+  updateWishList,
+  getWishList,
+} = stockSlice.actions;
 
 export default stockSlice.reducer;

@@ -5,9 +5,14 @@ import {
 } from "igniteui-react-charts";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setTimePeriod, fetchStockData } from "./features/stock/stockSlice";
+import {
+  setTimePeriod,
+  fetchStockData,
+  updateWishList,
+} from "./features/stock/stockSlice";
 import { FaArrowDown } from "react-icons/fa6";
 import { FaArrowUp } from "react-icons/fa6";
+import { TiStarFullOutline } from "react-icons/ti";
 
 IgrFinancialChartModule.register();
 
@@ -61,7 +66,17 @@ const Stock = ({ meta, values }) => {
   return (
     <div className="stock-container">
       <div className="stock-main-info">
-        <div className="stock-title">{meta.symbol}</div>
+        <div className="stock-top-line">
+          <div className="stock-title">{meta.symbol}</div>
+          <TiStarFullOutline
+            onClick={() =>
+              dispatch(
+                updateWishList({ symbol: meta.symbol, exchange: meta.exchange })
+              )
+            }
+            className="add-to-wishlist-icon"
+          />
+        </div>
         <div className="stock-price">
           {`${parseFloat(values[0].close).toFixed(2)} ${meta.currency}`}
         </div>
