@@ -63,6 +63,20 @@ export const searchStocks = createAsyncThunk(
     return response.data;
   }
 );
+export const fetchWishListStockData = createAsyncThunk(
+  "stock/fetchWishListStockData",
+  async (_, { getState }) => {
+    const { stock } = getState();
+
+    const formatedSymbol = stock.wishList
+      .map((item) => `${item.symbol}:${item.exchange},`)
+      .join(",");
+
+    const response = await customFetch.get(`/quote?symbol=${formatedSymbol}`);
+
+    return response.data;
+  }
+);
 
 // export const updateStocks = createAsyncThunk(
 //   "stock/updateStocks",
@@ -113,6 +127,7 @@ const initialState = {
   searchData: [],
   data: [],
   wishList: [],
+  wishListData: [],
   loading: false,
   error: null,
 };
@@ -155,7 +170,7 @@ const stockSlice = createSlice({
     },
     getWishList: (state, action) => {
       const storedData = localStorage.getItem("wishlist");
-      state.wishList = storedData;
+      state.wishList = JSON.parse(storedData);
     },
   },
   extraReducers: (builder) => {
@@ -174,6 +189,9 @@ const stockSlice = createSlice({
       })
       .addCase(searchStocks.fulfilled, (state, action) => {
         state.searchData = action.payload;
+      })
+      .addCase(fetchWishListStockData.fulfilled, (state, action) => {
+        state.wishListData = action.payload;
       });
   },
 });
