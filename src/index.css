@@ -20,7 +20,7 @@ Global
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  background: var(--clr-grey-10);
+  background: #f1f5f9;
   color: var(--clr-grey-1);
   line-height: 1.5;
   font-size: 0.875rem;
@@ -493,10 +493,94 @@ Wishlist Page
 ===============
 */
 
-.wishlist-container {
-  height: 120vh;
-  padding: 1rem;
+.wishlist-grid {
+  display: grid;
+  grid-gap: 2rem;
+  padding: 2rem;
   background-color: #f1f5f9;
+  grid-auto-rows: minmax(150px, auto);
+}
+
+.wishlist-item {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0.75rem;
+}
+.wishlist-item:hover {
+}
+.wishlist-symbol,
+.wishlist-exchange,
+.wishlist-close {
+  font-weight: 500;
+}
+
+.wishlist-name {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-right: 0.5rem;
+}
+.wishlist-symbol-exchange {
+  color: grey;
+}
+.wishlist-close,
+.wishlist-currency {
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+.wishlist-close {
+  margin-right: 0.25rem;
+}
+.wishlist-change {
+  display: flex;
+  align-items: center;
+  color: #2a9c29;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+.wishlist-change-negative {
+  color: #b30000;
+}
+.wishlist-change-value {
+  margin-right: 0.25rem;
+}
+.wishlist-percent-change {
+  margin-right: 0.1rem;
+}
+.wishlist-arrow {
+  font-size: 0.85rem;
+}
+/* <div key={key} className="wishlist-item">
+            <div>
+              <span className="wishlist-symbol">{symbol}:</span>
+              <span className="wishlist-exchange">{exchange}</span>
+            </div>
+            <div>
+              <span className="wishlist-close">
+                {parseFloat(close).toFixed(2)}
+              </span>
+              <span className="wishlist-currency">{currency}</span>
+            </div>
+            <div className="wishlist-change">
+              <span className="wishlist-change-value">
+                {parseFloat(change).toFixed(2)}
+              </span>
+              <span className="wishlist-percent-change">{`(${parseFloat(
+                percent_change
+              ).toFixed(2)}%)`}</span>
+            </div>
+         </div> */
+
+@media screen and (min-width: 600px) {
+  .wishlist-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .wishlist-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 /*

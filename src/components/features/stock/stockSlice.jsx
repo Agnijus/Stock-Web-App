@@ -168,7 +168,7 @@ const stockSlice = createSlice({
       const updatedWishList = JSON.stringify(wishListArray);
       localStorage.setItem("wishlist", updatedWishList);
     },
-    getWishList: (state, action) => {
+    getWishList: (state) => {
       const storedData = localStorage.getItem("wishlist");
       state.wishList = JSON.parse(storedData);
     },
