@@ -81,9 +81,7 @@ const Stock = ({ meta, values, toast }) => {
       (item) => item.symbol === symbol && item.exchange === exchange
     );
     dispatch(updateWishList({ symbol: symbol, exchange: exchange }));
-    console.log(currentlyAdded);
     setIsAddedToWishList(!currentlyAdded);
-    currentlyAdded;
     if (currentlyAdded) {
       toast("Stock removed from the wishlist");
     } else {
@@ -105,7 +103,9 @@ const Stock = ({ meta, values, toast }) => {
             onClick={() => {
               handleWishList(meta.symbol, meta.exchange);
             }}
-            className="add-to-wishlist-icon"
+            className={`add-to-wishlist-icon ${
+              isAddedToWishList ? "wishlist-icon-active" : ""
+            }`}
           />
         </div>
         <div className="stock-price">

@@ -29,7 +29,11 @@ function App() {
 
   return (
     <>
-      <ToastContainer />
+      <ToastContainer
+        position="top-center"
+        autoClose="1000"
+        hideProgressBar="true"
+      />
       <Router>
         <Routes>
           <Route path="/" element={<MainLayout />}>
