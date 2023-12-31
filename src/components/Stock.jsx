@@ -83,9 +83,9 @@ const Stock = ({ meta, values, toast }) => {
     dispatch(updateWishList({ symbol: symbol, exchange: exchange }));
     setIsAddedToWishList(!currentlyAdded);
     if (currentlyAdded) {
-      toast("Stock removed from the wishlist");
+      toast("Removed from the Wishlist");
     } else {
-      toast("Stock added to the wishlist");
+      toast("Added to Wishlist");
     }
   };
 

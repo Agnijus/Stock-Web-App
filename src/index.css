@@ -505,6 +505,7 @@ Wishlist Page
 }
 
 .wishlist-item {
+  position: relative;
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -573,6 +574,60 @@ Wishlist Page
 .wishlist-arrow {
   font-size: 0.85rem;
 }
+
+.wishlist-item-overlay {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: white;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  border-radius: 0.75rem;
+}
+
+.wishlist-item:hover .wishlist-item-overlay {
+  opacity: 1;
+}
+/* .wishlist-view-btn {
+  margin-bottom: 0.5rem;
+} */
+
+.wishlist-remove-btn,
+.wishlist-view-btn {
+  cursor: pointer;
+  background-color: transparent;
+  color: grey;
+  border: 1px solid grey;
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.05rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wishlist-remove-btn:hover,
+.wishlist-view-btn:hover {
+  background-color: #f0f0f0;
+  color: #000;
+  transform: scale(1.05);
+  border-color: rgb(160, 160, 160);
+}
+.wishlist-btn-icon {
+  margin-right: 0.5rem;
+}
+
 @media screen and (min-width: 600px) {
   .wishlist-grid {
     grid-template-columns: 1fr 1fr;

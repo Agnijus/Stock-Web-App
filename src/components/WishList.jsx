@@ -9,6 +9,7 @@ import { FaArrowDown } from "react-icons/fa6";
 import { FaArrowUp } from "react-icons/fa6";
 import { TiStarFullOutline } from "react-icons/ti";
 import { useNavigate } from "react-router-dom";
+import { FaEye, FaTrashAlt } from "react-icons/fa";
 
 const WishList = ({ toast }) => {
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ const WishList = ({ toast }) => {
 
   const handleRemove = (symbol, exchange) => {
     dispatch(updateWishList({ symbol, exchange }));
-    toast("Stock removed from Wishlist");
+    toast("Removed from the Wishlist");
   };
 
   const handleViewStock = (symbol, exchange) => {
@@ -74,10 +75,10 @@ const WishList = ({ toast }) => {
                     {`${symbol}: ${exchange}`}
                   </span>
                 </div>
-                <TiStarFullOutline
+                {/* <TiStarFullOutline
                   onClick={() => handleRemove(symbol, exchange)}
                   className="wishlist-icon"
-                />
+                /> */}
               </div>
               <div>
                 <span className="wishlist-close">
@@ -101,6 +102,23 @@ const WishList = ({ toast }) => {
                 <div className="wishlist-arrow">
                   {change > 0 ? <FaArrowUp /> : <FaArrowDown />}
                 </div>
+              </div>
+              <div className="wishlist-item-overlay">
+                <button
+                  onClick={() => handleViewStock(symbol, exchange)}
+                  className="wishlist-view-btn"
+                >
+                  View Stock
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleRemove(symbol, exchange);
+                  }}
+                  className="wishlist-remove-btn"
+                >
+                  Remove from Wishlist
+                </button>
               </div>
             </div>
           );
