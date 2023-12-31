@@ -7,7 +7,6 @@ import StockView from "./components/StockView";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { handleResize } from "./components/features/menu/menuSlice";
-import { fetchStockData } from "./components/features/stock/stockSlice";
 import WishList from "./components/WishList";
 import News from "./components/News";
 import Educational from "./components/Educational";

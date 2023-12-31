@@ -40,13 +40,14 @@ const Stock = ({ meta, values, toast }) => {
 
   useEffect(() => {
     dispatch(getWishList());
-    const isFound = Boolean(
-      wishList.find((item) => {
-        return item.symbol === meta.symbol && item.exchange === meta.exchange;
-      })
+  }, [dispatch]);
+
+  useEffect(() => {
+    const isFound = wishList.some(
+      (item) => item.symbol === meta.symbol && item.exchange === meta.exchange
     );
     setIsAddedToWishList(isFound);
-  }, []);
+  }, [wishList, meta.symbol, meta.exchange]);
 
   useEffect(() => {
     const processedData = values.map((item) => ({
@@ -76,10 +77,18 @@ const Stock = ({ meta, values, toast }) => {
   };
 
   const handleWishList = (symbol, exchange) => {
+    const currentlyAdded = wishList.some(
+      (item) => item.symbol === symbol && item.exchange === exchange
+    );
     dispatch(updateWishList({ symbol: symbol, exchange: exchange }));
-    isAddedToWishList
-      ? toast("Stock added to the wishlist")
-      : toast("Stock removed from the wishlist");
+    console.log(currentlyAdded);
+    setIsAddedToWishList(!currentlyAdded);
+    currentlyAdded;
+    if (currentlyAdded) {
+      toast("Stock removed from the wishlist");
+    } else {
+      toast("Stock added to the wishlist");
+    }
   };
 
   const startPrice = parseFloat(values[values.length - 1].close);
