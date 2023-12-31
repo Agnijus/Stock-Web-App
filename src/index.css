@@ -608,20 +608,18 @@ Wishlist Page
   padding: 0.5rem 1rem;
   border-radius: 0.75rem;
   transition: all 0.3s ease;
-  font-weight: bold;
   text-transform: uppercase;
   font-size: 0.8rem;
   letter-spacing: 0.05rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: 500;
 }
 
 .wishlist-remove-btn:hover,
 .wishlist-view-btn:hover {
-  background-color: #f0f0f0;
-  color: #000;
-  transform: scale(1.05);
+  transform: scale(1.03);
   border-color: rgb(160, 160, 160);
 }
 .wishlist-btn-icon {

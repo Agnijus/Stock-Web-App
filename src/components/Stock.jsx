@@ -43,9 +43,11 @@ const Stock = ({ meta, values, toast }) => {
   }, [dispatch]);
 
   useEffect(() => {
-    const isFound = wishList.some(
-      (item) => item.symbol === meta.symbol && item.exchange === meta.exchange
-    );
+    const isFound =
+      wishList &&
+      wishList.some(
+        (item) => item.symbol === meta.symbol && item.exchange === meta.exchange
+      );
     setIsAddedToWishList(isFound);
   }, [wishList, meta.symbol, meta.exchange]);
 
@@ -77,9 +79,11 @@ const Stock = ({ meta, values, toast }) => {
   };
 
   const handleWishList = (symbol, exchange) => {
-    const currentlyAdded = wishList.some(
-      (item) => item.symbol === symbol && item.exchange === exchange
-    );
+    const currentlyAdded =
+      wishList &&
+      wishList.some(
+        (item) => item.symbol === symbol && item.exchange === exchange
+      );
     dispatch(updateWishList({ symbol: symbol, exchange: exchange }));
     setIsAddedToWishList(!currentlyAdded);
     if (currentlyAdded) {
