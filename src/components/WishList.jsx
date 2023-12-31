@@ -8,12 +8,14 @@ import {
 import { FaArrowDown } from "react-icons/fa6";
 import { FaArrowUp } from "react-icons/fa6";
 import { TiStarFullOutline } from "react-icons/ti";
+import { useNavigate } from "react-router-dom";
 
 const WishList = ({ toast }) => {
   const dispatch = useDispatch();
   const { wishListData, wishList, loading } = useSelector(
     (state) => state.stock
   );
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getWishList());
@@ -22,13 +24,16 @@ const WishList = ({ toast }) => {
   useEffect(() => {
     if (wishList && wishList.length > 0) {
       dispatch(fetchWishListStockData());
-    } else {
     }
   }, [wishList, dispatch]);
 
   const handleRemove = (symbol, exchange) => {
     dispatch(updateWishList({ symbol, exchange }));
     toast("Stock removed from Wishlist");
+  };
+
+  const handleViewStock = (symbol, exchange) => {
+    navigate(`/stock/${symbol}/${exchange}`);
   };
 
   if (loading) {
@@ -57,7 +62,11 @@ const WishList = ({ toast }) => {
             currency,
           } = value;
           return (
-            <div key={key} className="wishlist-item">
+            <div
+              key={key}
+              onClick={() => handleViewStock(symbol, exchange)}
+              className="wishlist-item"
+            >
               <div className="wishlist-top-line">
                 <div>
                   <span className="wishlist-name">{name}</span>
