@@ -35,10 +35,7 @@ const SearchOverlay = () => {
 
   const handleSelect = (symbol, exchange) => {
     dispatch(toggleSearch(false));
-    dispatch(setStock({ symbol: symbol, exchange: exchange }));
-    dispatch(setTimePeriod({ timeFrame: "1D", interval: "5min" }));
-    dispatch(fetchStockData());
-    navigate(`/stock/${symbol}`);
+    navigate(`/stock/${symbol}/${exchange}`);
   };
 
   useEffect(() => {

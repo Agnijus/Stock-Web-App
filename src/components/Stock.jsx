@@ -9,6 +9,7 @@ import {
   setTimePeriod,
   fetchStockData,
   updateWishList,
+  getWishList,
 } from "./features/stock/stockSlice";
 import { FaArrowDown } from "react-icons/fa6";
 import { FaArrowUp } from "react-icons/fa6";
@@ -16,11 +17,12 @@ import { TiStarFullOutline } from "react-icons/ti";
 
 IgrFinancialChartModule.register();
 
-const Stock = ({ meta, values }) => {
+const Stock = ({ meta, values, toast }) => {
   console.log(meta, values);
-  const { timeFrame } = useSelector((state) => state.stock);
+  const { timeFrame, wishList } = useSelector((state) => state.stock);
   const dispatch = useDispatch();
   const [chartData, setChartData] = useState([]);
+  const [isAddedToWishList, setIsAddedToWishList] = useState(null);
   const month = [
     "Jan",
     "Feb",
@@ -35,6 +37,16 @@ const Stock = ({ meta, values }) => {
     "Nov",
     "Dec",
   ];
+
+  useEffect(() => {
+    dispatch(getWishList());
+    const isFound = Boolean(
+      wishList.find((item) => {
+        return item.symbol === meta.symbol && item.exchange === meta.exchange;
+      })
+    );
+    setIsAddedToWishList(isFound);
+  }, []);
 
   useEffect(() => {
     const processedData = values.map((item) => ({
@@ -58,6 +70,18 @@ const Stock = ({ meta, values }) => {
     return `btn ${timeFrame === buttonTimeFrame ? "btn-active" : ""}`;
   };
 
+  const handleTimePeriodChange = (timeFrame, interval) => {
+    dispatch(setTimePeriod({ timeFrame: timeFrame, interval: interval }));
+    dispatch(fetchStockData());
+  };
+
+  const handleWishList = (symbol, exchange) => {
+    dispatch(updateWishList({ symbol: symbol, exchange: exchange }));
+    isAddedToWishList
+      ? toast("Stock added to the wishlist")
+      : toast("Stock removed from the wishlist");
+  };
+
   const startPrice = parseFloat(values[values.length - 1].close);
   const endPrice = parseFloat(values[0].close);
   const priceChange = endPrice - startPrice;
@@ -69,11 +93,9 @@ const Stock = ({ meta, values }) => {
         <div className="stock-top-line">
           <div className="stock-title">{meta.symbol}</div>
           <TiStarFullOutline
-            onClick={() =>
-              dispatch(
-                updateWishList({ symbol: meta.symbol, exchange: meta.exchange })
-              )
-            }
+            onClick={() => {
+              handleWishList(meta.symbol, meta.exchange);
+            }}
             className="add-to-wishlist-icon"
           />
         </div>
@@ -100,8 +122,7 @@ const Stock = ({ meta, values }) => {
       <div className="btn-container">
         <button
           onClick={() => {
-            dispatch(setTimePeriod({ timeFrame: "1D", interval: "5min" }));
-            dispatch(fetchStockData());
+            handleTimePeriodChange("1D", "5min");
           }}
           className={setButtonClass("1D")}
           type="button"
@@ -110,8 +131,7 @@ const Stock = ({ meta, values }) => {
         </button>
         <button
           onClick={() => {
-            dispatch(setTimePeriod({ timeFrame: "5D", interval: "30min" }));
-            dispatch(fetchStockData());
+            handleTimePeriodChange("5D", "30min");
           }}
           className={setButtonClass("5D")}
           type="button"
@@ -120,8 +140,7 @@ const Stock = ({ meta, values }) => {
         </button>
         <button
           onClick={() => {
-            dispatch(setTimePeriod({ timeFrame: "1M", interval: "1day" }));
-            dispatch(fetchStockData());
+            handleTimePeriodChange("1M", "1day");
           }}
           className={setButtonClass("1M")}
           type="button"
@@ -130,8 +149,7 @@ const Stock = ({ meta, values }) => {
         </button>
         <button
           onClick={() => {
-            dispatch(setTimePeriod({ timeFrame: "6M", interval: "1day" }));
-            dispatch(fetchStockData());
+            handleTimePeriodChange("6M", "1day");
           }}
           className={setButtonClass("6M")}
           type="button"
@@ -140,8 +158,7 @@ const Stock = ({ meta, values }) => {
         </button>
         <button
           onClick={() => {
-            dispatch(setTimePeriod({ timeFrame: "YTD", interval: "1day" }));
-            dispatch(fetchStockData());
+            handleTimePeriodChange("YTD", "1day");
           }}
           className={setButtonClass("YTD")}
           type="button"
@@ -150,8 +167,7 @@ const Stock = ({ meta, values }) => {
         </button>
         <button
           onClick={() => {
-            dispatch(setTimePeriod({ timeFrame: "1Y", interval: "1day" }));
-            dispatch(fetchStockData());
+            handleTimePeriodChange("1Y", "1day");
           }}
           className={setButtonClass("1Y")}
           type="button"

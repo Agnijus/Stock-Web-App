@@ -38,7 +38,10 @@ function App() {
             <Route path="/wishlist" element={<WishList toast={toast} />} />
             <Route path="/news" element={<News />} />
             <Route path="/educational" element={<Educational />} />
-            <Route path="/stock/:symbol" element={<StockView />} />
+            <Route
+              path="/stock/:symbol/:exchange"
+              element={<StockView toast={toast} />}
+            />
           </Route>
         </Routes>
       </Router>

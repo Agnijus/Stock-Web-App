@@ -1,8 +1,25 @@
 import Stock from "./Stock";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import {
+  setStock,
+  setTimePeriod,
+  fetchStockData,
+} from "./features/stock/stockSlice";
 
-const StockView = () => {
+const StockView = ({ toast }) => {
+  const dispatch = useDispatch();
   const { data, loading, error } = useSelector((state) => state.stock);
+  const { symbol, exchange } = useParams();
+
+  useEffect(() => {
+    if (symbol && exchange) {
+      dispatch(setStock({ symbol, exchange }));
+      dispatch(setTimePeriod({ timeFrame: "1D", interval: "5min" }));
+      dispatch(fetchStockData());
+    }
+  }, [symbol, exchange]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -26,7 +43,7 @@ const StockView = () => {
   }
   return (
     <section className="product-view-container">
-      <Stock {...data} />
+      <Stock {...data} toast={toast} />
     </section>
   );
 };
