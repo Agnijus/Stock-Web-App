@@ -10,6 +10,7 @@ import {
   fetchStockData,
 } from "./features/stock/stockSlice";
 import { debounce } from "lodash";
+import { useNavigate } from "react-router-dom";
 
 const SearchOverlay = () => {
   const { searchData } = useSelector((state) => state.stock);
@@ -17,6 +18,7 @@ const SearchOverlay = () => {
   const dispatch = useDispatch();
   const inputRef = useRef();
   const overlayRef = useRef();
+  const navigate = useNavigate();
 
   const debouncedSearchStocks = debounce((term) => {
     if (term.length > 1) {
@@ -36,6 +38,7 @@ const SearchOverlay = () => {
     dispatch(setStock({ symbol: symbol, exchange: exchange }));
     dispatch(setTimePeriod({ timeFrame: "1D", interval: "5min" }));
     dispatch(fetchStockData());
+    navigate(`/stock/${symbol}`);
   };
 
   useEffect(() => {
