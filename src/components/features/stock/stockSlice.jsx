@@ -127,7 +127,7 @@ const initialState = {
   searchData: [],
   data: [],
   wishList: [],
-  wishListData: [],
+  wishListData: {},
   loading: false,
   error: null,
 };
@@ -167,6 +167,8 @@ const stockSlice = createSlice({
       }
       const updatedWishList = JSON.stringify(wishListArray);
       localStorage.setItem("wishlist", updatedWishList);
+      state.wishList = wishListArray;
+      state.wishListData = [];
     },
     getWishList: (state) => {
       const storedData = localStorage.getItem("wishlist");
@@ -190,8 +192,18 @@ const stockSlice = createSlice({
       .addCase(searchStocks.fulfilled, (state, action) => {
         state.searchData = action.payload;
       })
+      .addCase(fetchWishListStockData.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
       .addCase(fetchWishListStockData.fulfilled, (state, action) => {
+        state.loading = false;
+
         state.wishListData = action.payload;
+      })
+      .addCase(fetchWishListStockData.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
       });
   },
 });

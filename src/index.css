@@ -365,9 +365,7 @@ Home Page
 */
 
 .homepage-container {
-  height: 160vh;
   padding: 1rem;
-  background-color: #f1f5f9;
 }
 
 @media screen and (min-width: 600px) {
@@ -592,9 +590,7 @@ News Page
 */
 
 .news-container {
-  height: 120vh;
   padding: 1rem;
-  background-color: #f1f5f9;
 }
 
 /*
@@ -604,7 +600,15 @@ Educational Page
 */
 
 .educational-container {
-  height: 120vh;
   padding: 1rem;
-  background-color: #f1f5f9;
+}
+
+/*
+=============== 
+Product View Page 
+===============
+*/
+
+.product-view-container {
+  padding: 1rem;
 }
