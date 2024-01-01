@@ -20,6 +20,7 @@ IgrFinancialChartModule.register();
 const Stock = ({ meta, values, toast }) => {
   console.log(meta, values);
   const { timeFrame, wishList } = useSelector((state) => state.stock);
+  const { isSmallScreen } = useSelector((state) => state.menu);
   const dispatch = useDispatch();
   const [chartData, setChartData] = useState([]);
   const [isAddedToWishList, setIsAddedToWishList] = useState(null);
@@ -217,6 +218,8 @@ const Stock = ({ meta, values, toast }) => {
           isSeriesHighlightingEnabled={false}
           leftMargin={0}
           plotAreaMarginRight={50}
+          xAxisLabelTextStyle={isSmallScreen ? "9px arial, sans-serif" : ""}
+          yAxisLabelTextStyle={isSmallScreen ? "10px arial, sans-serif" : ""}
         />
       </div>
       <div className="stock-additional-info">

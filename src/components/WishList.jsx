@@ -63,11 +63,7 @@ const WishList = ({ toast }) => {
             currency,
           } = value;
           return (
-            <div
-              key={key}
-              onClick={() => handleViewStock(symbol, exchange)}
-              className="wishlist-item"
-            >
+            <div key={key} className="wishlist-item">
               <div className="wishlist-top-line">
                 <div>
                   <span className="wishlist-name">{name}</span>

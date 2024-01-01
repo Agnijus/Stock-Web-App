@@ -4,6 +4,7 @@ const initialState = {
   isSideBarOpened: window.innerWidth > 800,
   isManuallyClosed: false,
   isSearchActive: false,
+  isSmallScreen: window.innerWidth <= 600,
 };
 
 const menuSlice = createSlice({
@@ -18,6 +19,7 @@ const menuSlice = createSlice({
       if (!state.isManuallyClosed) {
         state.isSideBarOpened = window.innerWidth > 800;
       }
+      state.isSmallScreen = window.innerWidth <= 600;
     },
     toggleSearch: (state, action) => {
       state.isSearchActive = action.payload;
