@@ -2,13 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useRef, useEffect } from "react";
 import { toggleSearch } from "./features/menu/menuSlice";
 import { IoIosSearch } from "react-icons/io";
-import {
-  clearSearchData,
-  searchStocks,
-  setStock,
-  setTimePeriod,
-  fetchStockData,
-} from "./features/stock/stockSlice";
+import { clearSearchData, searchStocks } from "./features/stock/stockSlice";
 import { debounce } from "lodash";
 import { useNavigate } from "react-router-dom";
 
@@ -48,6 +42,7 @@ const SearchOverlay = () => {
 
     if (isSearchActive) {
       document.addEventListener("mousedown", handleClickOutside);
+      inputRef.current.focus();
     }
 
     return () => {
@@ -56,7 +51,7 @@ const SearchOverlay = () => {
   }, [isSearchActive, dispatch]);
 
   return (
-    <form ref={overlayRef} className="overlay-search-form">
+    <form ref={overlayRef} className="overlay-search-form" tabIndex="-1">
       <IoIosSearch className="overlay-search-icon" />
       <input
         ref={inputRef}
