@@ -10,6 +10,13 @@ import { BiSolidGraduation } from "react-icons/bi";
 const Sidebar = () => {
   const dispatch = useDispatch();
   const { isSideBarOpened } = useSelector((state) => state.menu);
+
+  const closeSidebarOnSmallScreen = () => {
+    if (window.innerWidth <= 800) {
+      dispatch(toggleSidebar());
+    }
+  };
+
   return (
     <aside className={`sidebar-container ${isSideBarOpened ? "active" : ""}`}>
       <div className="sidebar-center">
@@ -24,6 +31,7 @@ const Sidebar = () => {
         <NavLink
           className={({ isActive }) => `link ${isActive && "is-active"}`}
           to="/"
+          onClick={closeSidebarOnSmallScreen}
         >
           <FaHome className="link-icon" />
           <span className="link-title">Home</span>
@@ -31,6 +39,7 @@ const Sidebar = () => {
         <NavLink
           className={({ isActive }) => `link ${isActive && "is-active"}`}
           to="/wishlist"
+          onClick={closeSidebarOnSmallScreen}
         >
           <TiStarFullOutline className="link-icon" />
           <span className="link-title">WishList</span>
@@ -38,6 +47,7 @@ const Sidebar = () => {
         <NavLink
           className={({ isActive }) => `link ${isActive && "is-active"}`}
           to="/news"
+          onClick={closeSidebarOnSmallScreen}
         >
           <IoNewspaper className="link-icon" />
           <span className="link-title"> News</span>
@@ -45,6 +55,7 @@ const Sidebar = () => {
         <NavLink
           className={({ isActive }) => `link ${isActive && "is-active"}`}
           to="/educational"
+          onClick={closeSidebarOnSmallScreen}
         >
           <BiSolidGraduation className="link-icon" />
           <span className="link-title">Educational</span>
