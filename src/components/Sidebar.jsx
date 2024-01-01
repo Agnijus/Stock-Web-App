@@ -21,7 +21,7 @@ const Sidebar = () => {
     <aside className={`sidebar-container ${isSideBarOpened ? "active" : ""}`}>
       <div className="sidebar-center">
         <header>
-          <h3 className="title">Stockist</h3>
+          <h3 className="title">Share Sight</h3>
 
           <IoClose
             className="sidebar-close"

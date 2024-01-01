@@ -124,8 +124,9 @@ Sidebar
   padding: 1rem;
 }
 .title {
-  font-size: 1.7rem;
+  font-size: 1.75rem;
   color: rgb(75, 67, 67);
+  letter-spacing: 1px;
 }
 .link {
   display: flex;
@@ -609,33 +610,30 @@ Wishlist Page
 .wishlist-item:hover .wishlist-item-overlay {
   opacity: 1;
 }
-/* .wishlist-view-btn {
-  margin-bottom: 0.5rem;
-} */
 
 .wishlist-remove-btn,
 .wishlist-view-btn {
   cursor: pointer;
-  background-color: transparent;
-  color: grey;
-  border: 1px solid grey;
+  background-color: #f1f5f9;
+  color: rgb(128, 128, 128, 0.9);
   margin: 0.5rem;
+  border: none;
   padding: 0.5rem 1rem;
-  border-radius: 0.75rem;
+  border-radius: 0.5rem;
   transition: all 0.3s ease;
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   letter-spacing: 0.05rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .wishlist-remove-btn:hover,
 .wishlist-view-btn:hover {
-  transform: scale(1.03);
-  border-color: rgb(160, 160, 160);
+  background-color: rgb(212, 208, 208);
+  color: white;
 }
 .wishlist-btn-icon {
   margin-right: 0.5rem;

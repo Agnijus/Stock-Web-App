@@ -33,6 +33,7 @@ function App() {
         position="top-center"
         autoClose="1000"
         hideProgressBar="true"
+        style={{ width: "260px" }}
       />
       <Router>
         <Routes>
