@@ -192,7 +192,7 @@ const Stock = ({ meta, values, toast }) => {
       <div className="stock-chart">
         <IgrFinancialChart
           width="100%"
-          height="250px "
+          height={isSmallScreen ? "225px" : "275px"}
           chartType="Line"
           brushes={priceChange > 0 ? "#95ce94" : "#d16666"}
           thickness={2}
