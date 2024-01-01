@@ -121,9 +121,9 @@ Sidebar
   display: flex;
   justify-content: space-between;
   height: 60px;
+  padding: 1rem;
 }
 .title {
-  padding: 1rem;
   font-size: 1.7rem;
   color: rgb(75, 67, 67);
 }
