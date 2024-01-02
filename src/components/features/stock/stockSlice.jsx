@@ -173,7 +173,7 @@ const stockSlice = createSlice({
     },
     getWishList: (state) => {
       const storedData = localStorage.getItem("wishlist");
-      state.wishList = JSON.parse(storedData);
+      state.wishList = storedData ? JSON.parse(storedData) : [];
     },
   },
   extraReducers: (builder) => {
@@ -199,7 +199,6 @@ const stockSlice = createSlice({
       })
       .addCase(fetchWishListStockData.fulfilled, (state, action) => {
         state.loading = false;
-
         state.wishListData = action.payload;
       })
       .addCase(fetchWishListStockData.rejected, (state, action) => {
