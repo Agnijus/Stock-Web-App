@@ -23,7 +23,7 @@ const WishList = ({ toast }) => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (wishList && wishList.length > 0) {
+    if (wishList !== null && wishList.length > 0) {
       dispatch(fetchWishListStockData());
     }
   }, [wishList, dispatch]);

@@ -40,6 +40,7 @@ export const fetchStockData = createAsyncThunk(
       case "YTD":
         startDate.setMonth(0);
         startDate.setDate(1);
+        startDate.setHours(0, 0, 0, 0);
         startDate = formatDate(startDate);
         break;
       case "1Y":
