@@ -33,8 +33,8 @@ const WishList = ({ toast }) => {
     toast("Removed from the Wishlist");
   };
 
-  const handleViewStock = (symbol, exchange) => {
-    navigate(`/stock/${symbol}/${exchange}`);
+  const handleViewStock = (symbol, exchange, datetime) => {
+    navigate(`/stock/${symbol}/${exchange}`, { state: { datetime } });
   };
 
   if (loading) {
@@ -61,7 +61,9 @@ const WishList = ({ toast }) => {
             percent_change,
             close,
             currency,
+            datetime,
           } = value;
+          console.log(value);
           return (
             <div key={key} className="wishlist-item">
               <div className="wishlist-top-line">
@@ -71,10 +73,6 @@ const WishList = ({ toast }) => {
                     {`${symbol}: ${exchange}`}
                   </span>
                 </div>
-                {/* <TiStarFullOutline
-                  onClick={() => handleRemove(symbol, exchange)}
-                  className="wishlist-icon"
-                /> */}
               </div>
               <div>
                 <span className="wishlist-close">
@@ -101,7 +99,7 @@ const WishList = ({ toast }) => {
               </div>
               <div className="wishlist-item-overlay">
                 <button
-                  onClick={() => handleViewStock(symbol, exchange)}
+                  onClick={() => handleViewStock(symbol, exchange, datetime)}
                   className="wishlist-view-btn"
                 >
                   View Stock

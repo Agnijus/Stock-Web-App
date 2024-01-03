@@ -8,21 +8,27 @@ const formatDate = (date) => {
 
 export const fetchStockData = createAsyncThunk(
   "stock/fetchStockData",
-  async (_, { getState }) => {
+  async (datetime, { getState }) => {
     const { stock } = getState();
 
     const symbolExchange = encodeURIComponent(
       `${stock.symbol}:${stock.exchange}`
     );
 
-    const { data } = await customFetch.get(`/quote?symbol=${symbolExchange}`);
-    let startDate = new Date(data.datetime);
-    console.log(data);
+    let startDate;
+    if (datetime) {
+      startDate = new Date(datetime);
+    } else {
+      const { data } = await customFetch.get(`/quote?symbol=${symbolExchange}`);
+      startDate = new Date(data.datetime);
+    }
 
     switch (stock.timeFrame) {
       case "1D":
         const response = await customFetch.get(
-          `/time_series?symbol=${symbolExchange}&interval=${stock.interval}&date=${data.datetime}`
+          `/time_series?symbol=${symbolExchange}&interval=${
+            stock.interval
+          }&date=${formatDate(startDate)}`
         );
         return response.data;
       case "5D":

@@ -1,6 +1,6 @@
 import Stock from "./Stock";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import {
   setStock,
@@ -12,14 +12,16 @@ const StockView = ({ toast }) => {
   const dispatch = useDispatch();
   const { data, loading, error } = useSelector((state) => state.stock);
   const { symbol, exchange } = useParams();
+  const location = useLocation();
+  const datetime = location.state?.datetime;
 
   useEffect(() => {
     if (symbol && exchange) {
       dispatch(setStock({ symbol, exchange }));
       dispatch(setTimePeriod({ timeFrame: "1D", interval: "5min" }));
-      dispatch(fetchStockData());
+      dispatch(fetchStockData(datetime));
     }
-  }, [symbol, exchange]);
+  }, [symbol, exchange, datetime]);
 
   if (loading) {
     return <div>Loading...</div>;

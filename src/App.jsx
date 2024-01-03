@@ -16,8 +16,6 @@ import "react-toastify/dist/ReactToastify.css";
 function App() {
   const dispatch = useDispatch();
 
-  useEffect(() => {}, []);
-
   useEffect(() => {
     const resizeHandler = () => {
       dispatch(handleResize());
