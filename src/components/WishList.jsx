@@ -7,9 +7,8 @@ import {
 } from "./features/stock/stockSlice";
 import { FaArrowDown } from "react-icons/fa6";
 import { FaArrowUp } from "react-icons/fa6";
-import { TiStarFullOutline } from "react-icons/ti";
 import { useNavigate } from "react-router-dom";
-import { FaEye, FaTrashAlt } from "react-icons/fa";
+import { SyncLoader } from "react-spinners";
 
 const WishList = ({ toast }) => {
   const dispatch = useDispatch();
@@ -38,7 +37,9 @@ const WishList = ({ toast }) => {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <SyncLoader cssOverride={{ margin: "2rem" }} size={15} color="grey" />
+    );
   }
 
   if (wishListData.code === 400) {

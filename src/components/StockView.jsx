@@ -1,7 +1,10 @@
 import Stock from "./Stock";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, CSSProperties } from "react";
+import ClipLoader from "react-spinners/ClipLoader";
+import { SyncLoader } from "react-spinners";
+
 import {
   setStock,
   setTimePeriod,
@@ -24,7 +27,9 @@ const StockView = ({ toast }) => {
   }, [symbol, exchange, datetime]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <SyncLoader cssOverride={{ margin: "2rem" }} size={15} color="grey" />
+    );
   } else if (
     !data ||
     data.code === 400 ||
