@@ -10,6 +10,7 @@ import {
   setTimePeriod,
   fetchStockData,
 } from "./features/stock/stockSlice";
+import NotEnoughData from "./NotEnoughData";
 
 const StockView = ({ toast }) => {
   const dispatch = useDispatch();
@@ -37,12 +38,7 @@ const StockView = ({ toast }) => {
     !data.values ||
     data.values.length <= 1
   ) {
-    return (
-      <div className="not-enough-data">
-        No sufficient trading data available for {data?.meta?.symbol}
-        {data?.meta?.exchange}.
-      </div>
-    );
+    return <NotEnoughData />;
   }
 
   if (error) {

@@ -382,6 +382,16 @@ Home Page
 
 /*
 =============== 
+Product View Page 
+===============
+*/
+
+.product-view-container {
+  padding: 1rem;
+}
+
+/*
+=============== 
 Single Stock
 ===============
 */
@@ -505,6 +515,27 @@ Single Stock
   .stock-container {
     height: 500px;
   }
+}
+
+/*
+=============== 
+Not Enough Data
+===============
+*/
+
+.not-enough-data-container {
+  margin: 1rem;
+}
+.not-enough-data-container-center {
+  background-color: white;
+  color: grey;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 700;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /*
@@ -672,15 +703,5 @@ Educational Page
 */
 
 .educational-container {
-  padding: 1rem;
-}
-
-/*
-=============== 
-Product View Page 
-===============
-*/
-
-.product-view-container {
   padding: 1rem;
 }

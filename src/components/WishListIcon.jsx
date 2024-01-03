@@ -2,7 +2,6 @@ import React, { memo } from "react";
 import { TiStarFullOutline } from "react-icons/ti";
 
 const WishListIcon = memo(({ isAddedToWishList, meta, handleWishList }) => {
-  console.log("WishListIcon receiving isAddedToWishList:", isAddedToWishList);
   return (
     <TiStarFullOutline
       onClick={() => {

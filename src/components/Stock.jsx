@@ -19,7 +19,6 @@ import WishListIcon from "./WishListIcon";
 IgrFinancialChartModule.register();
 
 const Stock = ({ meta, values, toast }) => {
-  console.log(meta, values);
   const { timeFrame, wishList, is } = useSelector((state) => state.stock);
   const { isSmallScreen } = useSelector((state) => state.menu);
   const dispatch = useDispatch();
