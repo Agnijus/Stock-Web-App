@@ -221,6 +221,7 @@ export const {
   clearSearchData,
   updateWishList,
   getWishList,
+  setIsAddedToWishList,
 } = stockSlice.actions;
 
 export default stockSlice.reducer;

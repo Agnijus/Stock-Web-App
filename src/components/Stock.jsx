@@ -3,7 +3,7 @@ import {
   IgrFinancialChartModule,
   MarkerType,
 } from "igniteui-react-charts";
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setTimePeriod,
@@ -14,16 +14,17 @@ import {
 import { FaArrowDown } from "react-icons/fa6";
 import { FaArrowUp } from "react-icons/fa6";
 import { TiStarFullOutline } from "react-icons/ti";
+import WishListIcon from "./WishListIcon";
 
 IgrFinancialChartModule.register();
 
 const Stock = ({ meta, values, toast }) => {
   console.log(meta, values);
-  const { timeFrame, wishList } = useSelector((state) => state.stock);
+  const { timeFrame, wishList, is } = useSelector((state) => state.stock);
   const { isSmallScreen } = useSelector((state) => state.menu);
   const dispatch = useDispatch();
   const [chartData, setChartData] = useState([]);
-  const [isAddedToWishList, setIsAddedToWishList] = useState(null);
+  const [isAddedToWishList, setIsAddedToWishList] = useState(false);
   const month = [
     "Jan",
     "Feb",
@@ -104,13 +105,10 @@ const Stock = ({ meta, values, toast }) => {
       <div className="stock-main-info">
         <div className="stock-top-line">
           <div className="stock-title">{meta.symbol}</div>
-          <TiStarFullOutline
-            onClick={() => {
-              handleWishList(meta.symbol, meta.exchange);
-            }}
-            className={`add-to-wishlist-icon ${
-              isAddedToWishList ? "wishlist-icon-active" : ""
-            }`}
+          <WishListIcon
+            meta={meta}
+            handleWishList={handleWishList}
+            isAddedToWishList={isAddedToWishList}
           />
         </div>
         <div className="stock-price">
