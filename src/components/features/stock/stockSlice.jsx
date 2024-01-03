@@ -16,19 +16,20 @@ export const fetchStockData = createAsyncThunk(
     );
 
     let startDate;
+    let endDate;
+
     if (datetime) {
-      startDate = new Date(datetime);
+      endDate = datetime;
     } else {
       const { data } = await customFetch.get(`/quote?symbol=${symbolExchange}`);
       startDate = new Date(data.datetime);
+      endDate = data.datetime;
     }
 
     switch (stock.timeFrame) {
       case "1D":
         const response = await customFetch.get(
-          `/time_series?symbol=${symbolExchange}&interval=${
-            stock.interval
-          }&date=${formatDate(startDate)}`
+          `/time_series?symbol=${symbolExchange}&interval=${stock.interval}&date=${endDate}`
         );
         return response.data;
       case "5D":
@@ -56,7 +57,7 @@ export const fetchStockData = createAsyncThunk(
     }
 
     const response = await customFetch.get(
-      `/time_series?symbol=${symbolExchange}&interval=${stock.interval}&start_date=${startDate}&end_date=${data.datetime}`
+      `/time_series?symbol=${symbolExchange}&interval=${stock.interval}&start_date=${startDate}&end_date=${endDate}`
     );
     return response.data;
   }
