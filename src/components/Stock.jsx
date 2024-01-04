@@ -2,6 +2,7 @@ import {
   IgrFinancialChart,
   IgrFinancialChartModule,
   MarkerType,
+  IgrCategoryXAxis,
 } from "igniteui-react-charts";
 import { useState, useEffect, memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,7 +15,6 @@ import {
 import { FaArrowDown } from "react-icons/fa6";
 import { FaArrowUp } from "react-icons/fa6";
 import { TiStarFullOutline } from "react-icons/ti";
-import WishListIcon from "./WishListIcon";
 
 IgrFinancialChartModule.register();
 
@@ -23,7 +23,7 @@ const Stock = ({ meta, values, toast }) => {
   const { isSmallScreen } = useSelector((state) => state.menu);
   const dispatch = useDispatch();
   const [chartData, setChartData] = useState([]);
-  const [isAddedToWishList, setIsAddedToWishList] = useState(false);
+  const [isAddedToWishList, setIsAddedToWishList] = useState(null);
   const month = [
     "Jan",
     "Feb",
@@ -58,7 +58,7 @@ const Stock = ({ meta, values, toast }) => {
       close: parseFloat(item.close),
     }));
     setChartData(processedData);
-  }, [values]);
+  }, [values, wishList]);
 
   const formatX = (item) => {
     const day = item.getDate();
@@ -104,10 +104,13 @@ const Stock = ({ meta, values, toast }) => {
       <div className="stock-main-info">
         <div className="stock-top-line">
           <div className="stock-title">{meta.symbol}</div>
-          <WishListIcon
-            meta={meta}
-            handleWishList={handleWishList}
-            isAddedToWishList={isAddedToWishList}
+          <TiStarFullOutline
+            onClick={() => {
+              handleWishList(meta.symbol, meta.exchange);
+            }}
+            className={`add-to-wishlist-icon ${
+              isAddedToWishList ? "wishlist-icon-active" : ""
+            }`}
           />
         </div>
         <div className="stock-price">
@@ -194,6 +197,7 @@ const Stock = ({ meta, values, toast }) => {
           brushes={priceChange > 0 ? "#95ce94" : "#d16666"}
           thickness={2}
           titleAlignment="Left"
+          xAxisLabel={"xAxis"}
           yAxisMode="Numeric"
           xAxisMode={timeFrame === "5D" ? "Ordinal" : "Time"}
           xAxisFormatLabel={formatX}
@@ -217,6 +221,8 @@ const Stock = ({ meta, values, toast }) => {
           plotAreaMarginRight={50}
           xAxisLabelTextStyle={isSmallScreen ? "9px arial, sans-serif" : ""}
           yAxisLabelTextStyle={isSmallScreen ? "10px arial, sans-serif" : ""}
+          xAxisLabelRightMargin={10}
+          isWindowSyncedToVisibleRange={false}
         />
       </div>
       <div className="stock-additional-info">

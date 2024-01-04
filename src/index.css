@@ -120,14 +120,20 @@ Sidebar
 .sidebar-center header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   height: 60px;
   padding: 1rem;
 }
 .title {
-  font-size: 1.75rem;
-  color: rgb(75, 67, 67);
+  font-size: 1.7rem;
+  color: #191919;
   letter-spacing: 1px;
+  word-spacing: 1px;
 }
+.title-two {
+  color: grey;
+}
+
 .link {
   display: flex;
   align-items: center;
