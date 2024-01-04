@@ -702,6 +702,11 @@ News Page
   padding: 1rem;
 }
 
+.news-img {
+  width: 250px;
+  height: 250px;
+  object-fit: contain;
+}
 /*
 =============== 
 Educational Page 
