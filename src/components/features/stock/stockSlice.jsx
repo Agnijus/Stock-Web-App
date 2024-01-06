@@ -8,28 +8,21 @@ const formatDate = (date) => {
 
 export const fetchStockData = createAsyncThunk(
   "stock/fetchStockData",
-  async (datetime, { getState }) => {
+  async (_, { getState }) => {
     const { stock } = getState();
 
     const symbolExchange = encodeURIComponent(
       `${stock.symbol}:${stock.exchange}`
     );
 
-    let startDate;
-    let endDate;
-
-    if (datetime) {
-      endDate = datetime;
-    } else {
-      const { data } = await customFetch.get(`/quote?symbol=${symbolExchange}`);
-      startDate = new Date(data.datetime);
-      endDate = data.datetime;
-    }
+    const { data } = await customFetch.get(`/quote?symbol=${symbolExchange}`);
+    let startDate = new Date(data.datetime);
+    console.log(data);
 
     switch (stock.timeFrame) {
       case "1D":
         const response = await customFetch.get(
-          `/time_series?symbol=${symbolExchange}&interval=${stock.interval}&date=${endDate}`
+          `/time_series?symbol=${symbolExchange}&interval=${stock.interval}&date=${data.datetime}`
         );
         return response.data;
       case "5D":
@@ -47,7 +40,6 @@ export const fetchStockData = createAsyncThunk(
       case "YTD":
         startDate.setMonth(0);
         startDate.setDate(1);
-        startDate.setHours(0, 0, 0, 0);
         startDate = formatDate(startDate);
         break;
       case "1Y":
@@ -57,7 +49,7 @@ export const fetchStockData = createAsyncThunk(
     }
 
     const response = await customFetch.get(
-      `/time_series?symbol=${symbolExchange}&interval=${stock.interval}&start_date=${startDate}&end_date=${endDate}`
+      `/time_series?symbol=${symbolExchange}&interval=${stock.interval}&start_date=${startDate}&end_date=${data.datetime}`
     );
     return response.data;
   }
@@ -91,13 +83,15 @@ export const fetchNewsData = createAsyncThunk(
   async (_, { getState }) => {
     const { stock } = getState();
 
-    const response = await customFetch.get(
-      `https://www.alphavantage.co/query?function=NEWS_SENTIMENT&topics=TIME_SERIES_DAILY&apikey=4VE6KS28HPAE7VNP`
+    const response = await axios.get(
+      `https://finnhub.io/api/v1/news?category=general&token=${
+        import.meta.env.VITE_APP_NEWS_API_KEY
+      }`
     );
+
     return response.data;
   }
 );
-
 // export const updateStocks = createAsyncThunk(
 //   "stock/updateStocks",
 //   async (_, { getState }) => {
@@ -219,6 +213,7 @@ const stockSlice = createSlice({
       })
       .addCase(fetchWishListStockData.fulfilled, (state, action) => {
         state.loading = false;
+
         state.wishListData = action.payload;
       })
       .addCase(fetchWishListStockData.rejected, (state, action) => {
@@ -246,7 +241,6 @@ export const {
   clearSearchData,
   updateWishList,
   getWishList,
-  setIsAddedToWishList,
 } = stockSlice.actions;
 
 export default stockSlice.reducer;

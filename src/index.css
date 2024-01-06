@@ -698,7 +698,10 @@ News Page
 ===============
 */
 
-.news-container {
+.news-title {
+}
+
+.news-grid {
   display: grid;
   grid-gap: 1rem;
   padding: 1rem;
@@ -709,6 +712,14 @@ News Page
   display: flex;
   background-color: white;
   border-radius: 0.25rem;
+  cursor: pointer;
+}
+.news-item:hover {
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.08), 0 3px 3px 0 rgba(0, 0, 0, 0.06);
+  transition: var(--transition);
+}
+.news-top {
+  display: flex;
 }
 .news-img {
   width: 50%;
@@ -719,32 +730,50 @@ News Page
 .news-title {
   padding: 1rem;
   font-weight: 500;
-  height: 150px;
+  font-size: 0.8rem;
 }
+.news-date {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  padding: 1rem;
+}
+
 @media screen and (min-width: 600px) {
-  .news-container {
+  .news-grid {
     grid-template-columns: 1fr 1fr;
   }
   .news-item {
     flex-direction: column;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    min-height: 325px;
+  }
+  .news-title {
     font-size: 0.9rem;
   }
   .news-img {
     width: 100%;
   }
+  .news-date {
+    align-items: end;
+  }
+  .news-top {
+    display: block;
+  }
 }
 @media screen and (min-width: 1000px) {
-  .news-container {
+  .news-grid {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
 @media screen and (min-width: 1300px) {
-  .news-container {
+  .news-grid {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 @media screen and (min-width: 1500px) {
-  .news-container {
+  .news-grid {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 }
