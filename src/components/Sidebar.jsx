@@ -46,14 +46,7 @@ const Sidebar = () => {
           <TiStarFullOutline className="link-icon" />
           <span className="link-title">WishList</span>
         </NavLink>
-        <NavLink
-          className={({ isActive }) => `link ${isActive && "is-active"}`}
-          to="/news"
-          onClick={closeSidebarOnSmallScreen}
-        >
-          <IoNewspaper className="link-icon" />
-          <span className="link-title"> News</span>
-        </NavLink>
+
         <NavLink
           className={({ isActive }) => `link ${isActive && "is-active"}`}
           to="/educational"

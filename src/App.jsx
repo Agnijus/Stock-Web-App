@@ -8,7 +8,6 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { handleResize } from "./components/features/menu/menuSlice";
 import WishList from "./components/WishList";
-import News from "./components/News";
 import Educational from "./components/Educational";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -38,7 +37,6 @@ function App() {
           <Route path="/" element={<MainLayout />}>
             <Route index element={<HomePage />} />
             <Route path="/wishlist" element={<WishList toast={toast} />} />
-            <Route path="/news" element={<News />} />
             <Route path="/educational" element={<Educational />} />
             <Route
               path="/stock/:symbol/:exchange"

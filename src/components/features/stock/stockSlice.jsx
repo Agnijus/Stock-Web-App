@@ -78,20 +78,6 @@ export const fetchWishListStockData = createAsyncThunk(
   }
 );
 
-export const fetchNewsData = createAsyncThunk(
-  "stock/fetchNewsData",
-  async (_, { getState }) => {
-    const { stock } = getState();
-
-    const response = await axios.get(
-      `https://finnhub.io/api/v1/news?category=general&token=${
-        import.meta.env.VITE_APP_NEWS_API_KEY
-      }`
-    );
-
-    return response.data;
-  }
-);
 // export const updateStocks = createAsyncThunk(
 //   "stock/updateStocks",
 //   async (_, { getState }) => {
@@ -142,7 +128,6 @@ const initialState = {
   data: [],
   wishList: [],
   wishListData: {},
-  newsData: [],
   loading: false,
   error: null,
 };
@@ -219,18 +204,6 @@ const stockSlice = createSlice({
       .addCase(fetchWishListStockData.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
-      })
-      .addCase(fetchNewsData.pending, (state, action) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(fetchNewsData.fulfilled, (state, action) => {
-        state.loading = false;
-        state.newsData = action.payload;
-      })
-      .addCase(fetchNewsData.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
       });
   },
 });
