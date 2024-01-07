@@ -2,10 +2,17 @@ import { CgMenuLeftAlt } from "react-icons/cg";
 import { MdModeNight } from "react-icons/md";
 import { IoIosSearch } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleSidebar, toggleSearch } from "./features/menu/menuSlice";
+import {
+  toggleSidebar,
+  toggleSearch,
+  toggleDarkMode,
+} from "./features/menu/menuSlice";
+import { CiLight } from "react-icons/ci";
 
 const TopBar = () => {
-  const { isSearchActive } = useSelector((state) => state.menu);
+  const { isSearchActive, isDarkModeActive } = useSelector(
+    (state) => state.menu
+  );
   const dispatch = useDispatch();
 
   return (
@@ -24,10 +31,21 @@ const TopBar = () => {
                 isSearchActive ? "search-bar-active" : ""
               }`}
               type="text"
+              disabled={!isSearchActive}
             />
           </form>
         </div>
-        <MdModeNight className="theme-toggle" />
+        {isDarkModeActive ? (
+          <CiLight
+            className="theme-toggle"
+            onClick={() => dispatch(toggleDarkMode())}
+          />
+        ) : (
+          <MdModeNight
+            className="theme-toggle"
+            onClick={() => dispatch(toggleDarkMode())}
+          />
+        )}
       </div>
     </nav>
   );

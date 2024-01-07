@@ -5,6 +5,7 @@ const initialState = {
   isManuallyClosed: false,
   isSearchActive: false,
   isSmallScreen: window.innerWidth <= 600,
+  isDarkModeActive: false,
 };
 
 const menuSlice = createSlice({
@@ -24,9 +25,13 @@ const menuSlice = createSlice({
     toggleSearch: (state, action) => {
       state.isSearchActive = action.payload;
     },
+    toggleDarkMode: (state) => {
+      state.isDarkModeActive = !state.isDarkModeActive;
+    },
   },
 });
 
-export const { toggleSidebar, handleResize, toggleSearch } = menuSlice.actions;
+export const { toggleSidebar, handleResize, toggleSearch, toggleDarkMode } =
+  menuSlice.actions;
 
 export default menuSlice.reducer;
