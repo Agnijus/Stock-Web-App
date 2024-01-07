@@ -48,7 +48,17 @@ const WishList = ({ toast }) => {
   }
 
   if (wishList.length === 0) {
-    return <div>Please add stocks to your wishlist!</div>;
+    return (
+      <div
+        className={`no-items-wishlist-container ${
+          isDarkModeActive ? "no-items-wishlist-dark" : ""
+        }`}
+      >
+        <div className="no-items-wishlist-container-center">
+          There are currently no stocks in your wishlist.
+        </div>
+      </div>
+    );
   }
 
   return (

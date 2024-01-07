@@ -2,7 +2,6 @@ import { useSelector } from "react-redux";
 
 const NotEnoughData = () => {
   const { isDarkModeActive } = useSelector((state) => state.menu);
-  console.log("Dark Mode Active:", isDarkModeActive); // Check the value in the console
 
   return (
     <div
