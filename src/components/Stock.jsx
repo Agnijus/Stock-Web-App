@@ -19,8 +19,10 @@ import { TiStarFullOutline } from "react-icons/ti";
 IgrFinancialChartModule.register();
 
 const Stock = ({ meta, values, toast }) => {
-  const { timeFrame, wishList, is } = useSelector((state) => state.stock);
-  const { isSmallScreen } = useSelector((state) => state.menu);
+  const { timeFrame, wishList } = useSelector((state) => state.stock);
+  const { isSmallScreen, isDarkModeActive } = useSelector(
+    (state) => state.menu
+  );
   const dispatch = useDispatch();
   const [chartData, setChartData] = useState([]);
   const [isAddedToWishList, setIsAddedToWishList] = useState(null);
@@ -99,8 +101,11 @@ const Stock = ({ meta, values, toast }) => {
   const priceChange = endPrice - startPrice;
   const percentChange = (priceChange / startPrice) * 100;
 
+  const lightModeBrushes = priceChange > 0 ? "#95ce94" : "#d16666";
+  const darkModeBrushes = priceChange > 0 ? "#55d155" : "#ff6347";
+
   return (
-    <div className="stock-container">
+    <div className={`stock-container ${isDarkModeActive ? "stock-dark" : ""}`}>
       <div className="stock-main-info">
         <div className="stock-top-line">
           <div className="stock-title">{meta.symbol}</div>
@@ -194,7 +199,7 @@ const Stock = ({ meta, values, toast }) => {
           width="100%"
           height={isSmallScreen ? "225px" : "275px"}
           chartType="Line"
-          brushes={priceChange > 0 ? "#95ce94" : "#d16666"}
+          brushes={isDarkModeActive ? darkModeBrushes : lightModeBrushes}
           thickness={2}
           titleAlignment="Left"
           xAxisLabel={"xAxis"}
@@ -220,7 +225,9 @@ const Stock = ({ meta, values, toast }) => {
           leftMargin={0}
           plotAreaMarginRight={50}
           xAxisLabelTextStyle={isSmallScreen ? "9px arial, sans-serif" : ""}
+          xAxisLabelTextColor={isDarkModeActive ? "white" : ""}
           yAxisLabelTextStyle={isSmallScreen ? "10px arial, sans-serif" : ""}
+          yAxisLabelTextColor={isDarkModeActive ? "white" : ""}
           xAxisLabelRightMargin={10}
           isWindowSyncedToVisibleRange={false}
         />

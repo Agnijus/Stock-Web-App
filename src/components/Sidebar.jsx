@@ -9,7 +9,9 @@ import { BiSolidGraduation } from "react-icons/bi";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
-  const { isSideBarOpened } = useSelector((state) => state.menu);
+  const { isSideBarOpened, isDarkModeActive } = useSelector(
+    (state) => state.menu
+  );
 
   const closeSidebarOnSmallScreen = () => {
     if (window.innerWidth <= 800) {
@@ -18,7 +20,11 @@ const Sidebar = () => {
   };
 
   return (
-    <aside className={`sidebar-container ${isSideBarOpened ? "active" : ""}`}>
+    <aside
+      className={`sidebar-container ${isSideBarOpened ? "active" : ""} ${
+        isDarkModeActive ? "sidebar-dark" : ""
+      }`}
+    >
       <div className="sidebar-center">
         <header>
           <h3 className="title">
@@ -31,7 +37,11 @@ const Sidebar = () => {
           />
         </header>
         <NavLink
-          className={({ isActive }) => `link ${isActive && "is-active"}`}
+          className={({ isActive }) =>
+            `link ${isActive && "is-active"} ${
+              isDarkModeActive ? "sidebar-dark" : ""
+            }`
+          }
           to="/"
           onClick={closeSidebarOnSmallScreen}
         >

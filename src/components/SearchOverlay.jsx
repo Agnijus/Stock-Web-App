@@ -8,7 +8,9 @@ import { useNavigate } from "react-router-dom";
 
 const SearchOverlay = () => {
   const { searchData } = useSelector((state) => state.stock);
-  const { isSearchActive } = useSelector((state) => state.menu);
+  const { isSearchActive, isDarkModeActive } = useSelector(
+    (state) => state.menu
+  );
   const dispatch = useDispatch();
   const inputRef = useRef();
   const overlayRef = useRef();
@@ -51,7 +53,13 @@ const SearchOverlay = () => {
   }, [isSearchActive, dispatch]);
 
   return (
-    <form ref={overlayRef} className="overlay-search-form" tabIndex="-1">
+    <form
+      ref={overlayRef}
+      className={`overlay-search-form ${
+        isDarkModeActive ? "overlay-dark" : ""
+      }`}
+      tabIndex="-1"
+    >
       <IoIosSearch className="overlay-search-icon" />
       <input
         ref={inputRef}

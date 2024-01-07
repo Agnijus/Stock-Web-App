@@ -16,7 +16,9 @@ const TopBar = () => {
   const dispatch = useDispatch();
 
   return (
-    <nav className="topbar-container">
+    <nav
+      className={`topbar-container ${isDarkModeActive ? "topbar-dark" : ""}`}
+    >
       <div className="topbar-center">
         <div className="topbar-left">
           <CgMenuLeftAlt
@@ -31,7 +33,7 @@ const TopBar = () => {
                 isSearchActive ? "search-bar-active" : ""
               }`}
               type="text"
-              disabled={!isSearchActive}
+              disabled={isSearchActive}
             />
           </form>
         </div>

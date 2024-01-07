@@ -5,7 +5,7 @@ import HomePage from "./components/HomePage";
 import StockView from "./components/StockView";
 
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { handleResize } from "./components/features/menu/menuSlice";
 import WishList from "./components/WishList";
 import Educational from "./components/Educational";
@@ -14,6 +14,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const dispatch = useDispatch();
+  const { isDarkModeActive } = useSelector((state) => state.menu);
 
   useEffect(() => {
     const resizeHandler = () => {
@@ -30,7 +31,12 @@ function App() {
         position="top-center"
         autoClose="1000"
         hideProgressBar="true"
-        style={{ width: "260px" }}
+        toastStyle={{
+          backgroundColor: isDarkModeActive ? "#3a3a3a" : "white",
+          color: isDarkModeActive ? "white" : "grey",
+          width: "260px",
+          margin: "0 auto",
+        }}
       />
       <Router>
         <Routes>

@@ -1,31 +1,29 @@
 import Stock from "./Stock";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, useLocation } from "react-router-dom";
-import { useEffect, CSSProperties } from "react";
-import ClipLoader from "react-spinners/ClipLoader";
-import { SyncLoader } from "react-spinners";
-
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 import {
   setStock,
   setTimePeriod,
   fetchStockData,
 } from "./features/stock/stockSlice";
 import NotEnoughData from "./NotEnoughData";
+import { SyncLoader } from "react-spinners";
 
 const StockView = ({ toast }) => {
   const dispatch = useDispatch();
   const { data, loading, error } = useSelector((state) => state.stock);
+  const { isDarkModeActive } = useSelector((state) => state.menu);
+
   const { symbol, exchange } = useParams();
-  const location = useLocation();
-  const datetime = location.state?.datetime;
 
   useEffect(() => {
     if (symbol && exchange) {
       dispatch(setStock({ symbol, exchange }));
       dispatch(setTimePeriod({ timeFrame: "1D", interval: "5min" }));
-      dispatch(fetchStockData(datetime));
+      dispatch(fetchStockData());
     }
-  }, [symbol, exchange, datetime]);
+  }, [symbol, exchange]);
 
   if (loading) {
     return (

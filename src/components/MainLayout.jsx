@@ -5,12 +5,12 @@ import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 
 const MainLayout = () => {
-  const { isSideBarOpened, isSearchActive } = useSelector(
+  const { isSideBarOpened, isSearchActive, isDarkModeActive } = useSelector(
     (state) => state.menu
   );
 
   return (
-    <main className="app">
+    <main className={`app ${isDarkModeActive ? "app-dark" : ""}`}>
       {isSearchActive && (
         <div className="app-overlay">
           <SearchOverlay />

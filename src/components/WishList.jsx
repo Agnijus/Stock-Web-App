@@ -15,6 +15,7 @@ const WishList = ({ toast }) => {
   const { wishListData, wishList, loading } = useSelector(
     (state) => state.stock
   );
+  const { isDarkModeActive } = useSelector((state) => state.menu);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -51,7 +52,9 @@ const WishList = ({ toast }) => {
   }
 
   return (
-    <section className="wishlist-grid">
+    <section
+      className={`wishlist-grid ${isDarkModeActive ? "wishlist-dark" : ""}`}
+    >
       {wishListData &&
         Object.entries(wishListData).map(([key, value]) => {
           const {
