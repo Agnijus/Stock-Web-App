@@ -128,6 +128,7 @@ const initialState = {
   data: [],
   wishList: [],
   wishListData: {},
+  homePageStockData: [],
   loading: false,
   error: null,
 };
