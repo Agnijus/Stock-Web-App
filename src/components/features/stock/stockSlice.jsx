@@ -78,6 +78,14 @@ export const fetchWishListStockData = createAsyncThunk(
   }
 );
 
+export const fetchHomePageStockData = createAsyncThunk(
+  "stock/fetchHomePageStockData",
+  async () => {
+    const response = await customFetch.get(`/quote?symbol=tsla,aapl,amzn,msft`);
+    return response.data;
+  }
+);
+
 // export const updateStocks = createAsyncThunk(
 //   "stock/updateStocks",
 //   async (_, { getState }) => {
@@ -203,6 +211,18 @@ const stockSlice = createSlice({
         state.wishListData = action.payload;
       })
       .addCase(fetchWishListStockData.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(fetchHomePageStockData.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchHomePageStockData.fulfilled, (state, action) => {
+        state.loading = false;
+        state.homePageStockData = action.payload;
+      })
+      .addCase(fetchHomePageStockData.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });

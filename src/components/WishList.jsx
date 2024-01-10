@@ -5,8 +5,7 @@ import {
   getWishList,
   updateWishList,
 } from "./features/stock/stockSlice";
-import { FaArrowDown } from "react-icons/fa6";
-import { FaArrowUp } from "react-icons/fa6";
+import { FaArrowDown, FaArrowUp } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import { SyncLoader } from "react-spinners";
 
@@ -79,35 +78,35 @@ const WishList = ({ toast }) => {
           } = value;
           console.log(value);
           return (
-            <div key={key} className="wishlist-item">
-              <div className="wishlist-top-line">
+            <div key={key} className="grid-item">
+              <div className="grid-top-line">
                 <div>
-                  <span className="wishlist-name">{name}</span>
-                  <span className="wishlist-symbol-exchange">
+                  <span className="grid-name">{name}</span>
+                  <span className="grid-symbol-exchange">
                     {`${symbol}: ${exchange}`}
                   </span>
                 </div>
               </div>
               <div>
-                <span className="wishlist-close">
+                <span className="grid-close">
                   {parseFloat(close).toFixed(2)}
                 </span>
-                <span className="wishlist-currency">{currency}</span>
+                <span className="grid-currency">{currency}</span>
               </div>
 
               <div
-                className={`wishlist-change ${
-                  change < 0 ? "wishlist-change-negative" : ""
+                className={`grid-change ${
+                  change < 0 ? "grid-change-negative" : ""
                 }`}
               >
-                <div className="wishlist-change-value">
+                <div className="grid-change-value">
                   {parseFloat(change).toFixed(2)}
                 </div>
 
-                <div className="wishlist-percent-change">{`(${parseFloat(
+                <div className="grid-percent-change">{`(${parseFloat(
                   percent_change
                 ).toFixed(2)}%)`}</div>
-                <div className="wishlist-arrow">
+                <div className="grid-arrow">
                   {change > 0 ? <FaArrowUp /> : <FaArrowDown />}
                 </div>
               </div>
