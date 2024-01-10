@@ -996,22 +996,22 @@ Dark Mode
   background-color: #272727;
 }
 
-.wishlist-dark .wishlist-item {
+.wishlist-dark .grid-item {
   background-color: #3a3a3a;
   color: #ffffff;
   border: 1px solid #333333;
   transition: var(--transition);
 }
 
-.wishlist-dark .wishlist-change {
+.wishlist-dark .grid-change {
   color: #32cd32;
 }
 
-.wishlist-dark .wishlist-change-negative {
+.wishlist-dark .grid-change-negative {
   color: #ff6347;
 }
 
-.wishlist-dark .wishlist-item:hover {
+.wishlist-dark .grid-item:hover {
   background-color: #333333;
   box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.08), 0 3px 3px 0 rgba(0, 0, 0, 0.06);
 }
@@ -1021,7 +1021,7 @@ Dark Mode
   transition: var(--transition);
 }
 
-.wishlist-dark .wishlist-item:hover .wishlist-item-overlay {
+.wishlist-dark .grid-item:hover .wishlist-item-overlay {
   background-color: #333333;
   opacity: 1;
 }
