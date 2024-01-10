@@ -454,7 +454,8 @@ Home Page
   margin-right: 0.1rem;
 }
 .homepage-grid-arrow {
-  font-size: 0.6rem;
+  font-size: 0.7rem;
+  padding-top: 0.2rem;
 }
 
 .homepage-section {
@@ -465,7 +466,7 @@ Home Page
 .homepage-icon {
   vertical-align: middle;
   margin: 0 0.25rem;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 
 .homepage-section {
@@ -483,7 +484,7 @@ Home Page
 
 .homepage-section p {
   color: #555;
-  font-size: 1rem;
+  font-size: 0.9rem;
   line-height: 1.6;
   margin: 0;
 }
@@ -498,7 +499,7 @@ Home Page
 .card-icon {
   background-color: #f2f2f2;
   border-radius: 50%;
-  padding: 1rem;
+  padding: 0.75rem;
   margin-bottom: 0.5rem;
 }
 
@@ -524,7 +525,6 @@ Home Page
 
   .homepage-section {
     width: calc(50% - 2rem);
-    margin: 1rem;
   }
 
   @media screen and (min-width: 1150px) {
@@ -888,16 +888,34 @@ Dark Mode
 
 /* homepage */
 
-.homepage-dark {
-  color: #ffffff;
+.homepage-dark .homepage-section {
+  background-color: #333;
+  color: #fff;
 }
 
-.homepage-dark .homepage-section p {
-  color: #c0c0c0;
+.homepage-dark .homepage-grid-item {
+  background-color: #333;
+  color: #fff;
 }
 
-.homepage-dark .homepage-icon {
-  color: white;
+.homepage-dark .card-title {
+  color: #fff;
+}
+
+.homepage-dark .card-icon {
+  background-color: #444;
+}
+
+.homepage-dark p {
+  color: #fff;
+}
+
+.homepage-dark .homepage-grid-change {
+  color: #32cd32;
+}
+
+.homepage-dark .homepage-grid-change-negative {
+  color: #ff6347;
 }
 
 /* sidebar */

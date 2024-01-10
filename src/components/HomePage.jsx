@@ -33,16 +33,7 @@ const HomePage = () => {
       <div className="homepage-stock-grid">
         {homePageStockData &&
           Object.entries(homePageStockData).map(([key, value]) => {
-            const {
-              name,
-              symbol,
-              exchange,
-              change,
-              percent_change,
-              close,
-              currency,
-              datetime,
-            } = value;
+            const { symbol, change, percent_change, datetime } = value;
             console.log(value);
             return (
               <div
