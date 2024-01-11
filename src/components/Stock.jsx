@@ -228,7 +228,7 @@ const Stock = ({ meta, values, toast }) => {
           xAxisLabelTextColor={isDarkModeActive ? "white" : ""}
           yAxisLabelTextStyle={isSmallScreen ? "10px arial, sans-serif" : ""}
           yAxisLabelTextColor={isDarkModeActive ? "white" : ""}
-          xAxisLabelRightMargin={10}
+          xAxisLabelRightMargin={0}
           isWindowSyncedToVisibleRange={false}
         />
       </div>
