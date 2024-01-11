@@ -395,7 +395,7 @@ Home Page
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0.5rem;
-  width: 100vw;
+  width: 100%;
   max-width: 1200px;
   margin-bottom: 2rem;
 }
@@ -424,7 +424,7 @@ Home Page
   margin-right: 0.5rem;
 }
 .homepage-grid-symbol {
-  font-size: 0.5rem;
+  font-size: 0.45rem;
   font-weight: 500;
   color: grey;
   margin-right: 0.25rem;
@@ -434,16 +434,14 @@ Home Page
   display: flex;
   align-items: center;
   color: #2a9c29;
-  font-size: 1rem;
   font-weight: 500;
-  font-size: 0.75rem;
 }
 .homepage-grid-change-negative {
   color: #b30000;
 }
 
 .homepage-grid-percent-change {
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   margin-right: 0.1rem;
 }
 .homepage-grid-arrow {
@@ -508,7 +506,7 @@ Home Page
   justify-content: center;
 }
 
-@media screen and (min-width: 450px) {
+@media screen and (min-width: 500px) {
   .homepage-grid-item {
     padding: 0.5rem;
   }
