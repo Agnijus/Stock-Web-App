@@ -18,8 +18,6 @@ const HomePage = () => {
     dispatch(fetchHomePageStockData());
   }, []);
 
-  console.log(homePageStockData);
-
   const handleClick = (symbol, datetime) => {
     navigate(`/stock/${symbol}/NASDAQ`, { state: { datetime } });
   };
