@@ -409,7 +409,6 @@ Home Page
   border-radius: var(--radius);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   transition: var(--transition);
-  font-size: 0.75rem;
   cursor: pointer;
 }
 .homepage-grid-item:hover {
@@ -424,7 +423,7 @@ Home Page
   margin-right: 0.5rem;
 }
 .homepage-grid-symbol {
-  font-size: 0.45rem;
+  font-size: 0.5rem;
   font-weight: 500;
   color: grey;
   margin-right: 0.25rem;
@@ -441,11 +440,11 @@ Home Page
 }
 
 .homepage-grid-percent-change {
-  font-size: 0.6rem;
+  font-size: 0.5rem;
   margin-right: 0.1rem;
 }
 .homepage-grid-arrow {
-  font-size: 0.65rem;
+  font-size: 0.5rem;
   padding-top: 0.2rem;
 }
 
@@ -505,21 +504,6 @@ Home Page
   flex-direction: column;
   justify-content: center;
 }
-@media screen and (max-width: 499px) {
-  .homepage-grid-item {
-    padding: 0.25rem;
-  }
-  .homepage-grid-symbol {
-    font-size: 0.4rem;
-  }
-  .homepage-grid-percent-change {
-    font-size: 0.4rem;
-    margin-right: 0.1rem;
-  }
-  .homepage-grid-arrow {
-    font-size: 0.4rem;
-  }
-}
 
 @media screen and (min-width: 420px) {
   .homepage-grid-item {
@@ -543,6 +527,16 @@ Home Page
     justify-content: center;
     flex-wrap: wrap;
     max-width: 1200px;
+  }
+
+  .homepage-grid-symbol {
+    font-size: 0.7rem;
+  }
+  .homepage-grid-percent-change {
+    font-size: 0.7rem;
+  }
+  .homepage-grid-arrow {
+    font-size: 0.7rem;
   }
 
   .homepage-section {
