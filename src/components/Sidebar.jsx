@@ -6,6 +6,8 @@ import { FaHome } from "react-icons/fa";
 import { TiStarFullOutline } from "react-icons/ti";
 import { IoNewspaper } from "react-icons/io5";
 import { BiSolidGraduation } from "react-icons/bi";
+import LogoWhite from "../assets/logoWhite.png";
+import LogoBlack from "../assets/logoBlack.png";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -28,7 +30,12 @@ const Sidebar = () => {
       <div className="sidebar-center">
         <header>
           <h3 className="title">
-            Share <span className="title-two">Sight</span>
+            <img
+              className="logo"
+              src={isDarkModeActive ? LogoWhite : LogoBlack}
+              alt="Share Sight"
+            />
+            {/* Share <span className="title-two">Sight</span> */}
           </h3>
 
           <IoClose

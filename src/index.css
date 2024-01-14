@@ -127,6 +127,12 @@ Sidebar
   height: 60px;
   padding: 1rem;
 }
+.logo {
+  margin-top: 0.25rem;
+  margin-left: -0.5rem;
+  width: 170px;
+  height: 40px;
+}
 .title {
   font-size: 1.7rem;
   color: #191919;
