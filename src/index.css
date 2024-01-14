@@ -463,6 +463,7 @@ Home Page
   vertical-align: middle;
   margin: 0 0.25rem;
   font-size: 1.5rem;
+  color: #555;
 }
 
 .homepage-section {
@@ -500,7 +501,8 @@ Home Page
 }
 
 .card-title {
-  font-weight: bold;
+  font-weight: 700;
+  color: #555;
   margin-bottom: 0.5rem;
 }
 
@@ -926,6 +928,9 @@ Dark Mode
 
 .homepage-dark .card-icon {
   background-color: #444;
+}
+.homepage-dark .homepage-icon {
+  color: white;
 }
 
 .homepage-dark p {
