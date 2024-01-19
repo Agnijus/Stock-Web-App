@@ -888,7 +888,63 @@ Educational Page
 */
 
 .educational-container {
-  padding: 1rem;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 1rem auto;
+  max-width: var(--fixed-width);
+}
+
+.educational-container .title {
+  color: #333;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.educational-container .heading-level2 {
+  font-size: 1.25rem;
+  color: #333;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.educational-container p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.educational-container ul {
+  list-style-type: none;
+  margin-left: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.educational-container ul li {
+  margin-bottom: 0.5rem;
+}
+
+.educational-container ul li strong {
+  color: #333;
+}
+
+.educational-container dl dt {
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.educational-container dl dd {
+  margin-bottom: 1rem;
+  margin-left: 2rem;
+}
+
+.educational-container .footer-content {
+  text-align: center;
+  padding-top: 2rem;
+  font-style: italic;
 }
 
 /*
