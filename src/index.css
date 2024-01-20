@@ -1008,11 +1008,11 @@ Dark Mode
 
 .homepage-dark .homepage-grid-item {
   background-color: #333;
-  color: #fff;
+  color: #ddd;
 }
 
 .homepage-dark .card-title {
-  color: #fff;
+  color: #ccc;
 }
 
 .homepage-dark .card-icon {
@@ -1023,7 +1023,7 @@ Dark Mode
 }
 
 .homepage-dark p {
-  color: #fff;
+  color: #eee;
 }
 
 .homepage-dark .homepage-grid-change {
@@ -1225,26 +1225,32 @@ Dark Mode
 
 /* educational */
 
+.educational-dark .title {
+  color: #e0e0e0;
+  text-shadow: 0px 0px 3px rgba(255, 255, 255, 0.2);
+}
 
-.educational-dark .title,
 .educational-dark .intro-text,
-.educational-dark .educational-card-title,
 .educational-dark .educational-card-text,
 .educational-dark .footer-content {
-  color: white; /* Lighter text color for dark mode */
+  color: #ccc;
+}
+
+.educational-dark .educational-card-title {
+  color: rgb(226, 223, 223);
+  text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.1);
 }
 
 .educational-dark .educational-card {
-  background: #333; /* Darker background for cards */
-  border: 1px solid #333; /* Slightly different border to pop out */
- 
+  background: #333;
+  border: 1px solid #2e2e2e;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.educational-dark .educational-card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
 
-
-
-
-/* Responsive adjustments */
 @media screen and (max-width: 800px) {
   .educational-dark .title {
     font-size: 2.5rem;
@@ -1254,3 +1260,4 @@ Dark Mode
   .educational-dark .educational-card-text {
     font-size: 0.9rem;
   }
+}
