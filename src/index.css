@@ -965,7 +965,11 @@ Educational Page
   color: #5d6d7e;
 }
 
-/* Responsive adjustments */
+@media screen and (max-width: 600px) {
+  .educational-container {
+    padding: 1rem;
+  }
+}
 @media screen and (max-width: 800px) {
   .title {
     font-size: 2.5rem;
@@ -1218,3 +1222,35 @@ Dark Mode
   background-color: #444444;
   color: #e0e0e0;
 }
+
+/* educational */
+
+
+.educational-dark .title,
+.educational-dark .intro-text,
+.educational-dark .educational-card-title,
+.educational-dark .educational-card-text,
+.educational-dark .footer-content {
+  color: white; /* Lighter text color for dark mode */
+}
+
+.educational-dark .educational-card {
+  background: #333; /* Darker background for cards */
+  border: 1px solid #333; /* Slightly different border to pop out */
+ 
+}
+
+
+
+
+
+/* Responsive adjustments */
+@media screen and (max-width: 800px) {
+  .educational-dark .title {
+    font-size: 2.5rem;
+  }
+
+  .educational-dark .intro-text,
+  .educational-dark .educational-card-text {
+    font-size: 0.9rem;
+  }
