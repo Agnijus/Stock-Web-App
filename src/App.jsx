@@ -32,11 +32,12 @@ function App() {
         autoClose="1000"
         hideProgressBar="true"
         toastStyle={{
-          backgroundColor: isDarkModeActive ? "#3a3a3a" : "white",
-          color: isDarkModeActive ? "white" : "grey",
+          // backgroundColor: isDarkModeActive ? "#3a3a3a" : "white",
+          // color: isDarkModeActive ? "white" : "grey",
           width: "260px",
           margin: "0 auto",
         }}
+        className={isDarkModeActive ? "toast-dark" : ""}
       />
       <Router>
         <Routes>
