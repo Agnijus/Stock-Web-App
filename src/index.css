@@ -81,7 +81,6 @@ p {
     line-height: 1;
   }
 }
-
 .app {
   display: flex;
   flex-direction: column;

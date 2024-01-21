@@ -27,26 +27,22 @@ export const fetchStockData = createAsyncThunk(
         return response.data;
       case "5D":
         startDate.setDate(startDate.getDate() - 5);
-        startDate = formatDate(startDate);
         break;
       case "1M":
         startDate.setDate(startDate.getDate() - 30);
-        startDate = formatDate(startDate);
         break;
       case "6M":
         startDate.setDate(startDate.getDate() - 180);
-        startDate = formatDate(startDate);
         break;
       case "YTD":
         startDate.setMonth(0);
         startDate.setDate(1);
-        startDate = formatDate(startDate);
         break;
       case "1Y":
         startDate.setDate(startDate.getDate() - 365);
-        startDate = formatDate(startDate);
         break;
     }
+    startDate = formatDate(startDate);
 
     const response = await customFetch.get(
       `/time_series?symbol=${symbolExchange}&interval=${stock.interval}&start_date=${startDate}&end_date=${data.datetime}`
