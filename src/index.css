@@ -602,18 +602,17 @@ Single Stock
 }
 .add-to-wishlist-icon {
   font-size: 1.5rem;
-  color: grey;
   cursor: pointer;
 }
-.wishlist-icon-active {
+/* .wishlist-icon-active {
   color: rgba(224, 191, 3, 0.7);
-}
-.wishlist-icon-active:hover {
+} */
+/* .wishlist-icon-active:hover {
   color: grey !important;
-}
-.add-to-wishlist-icon:hover {
+} */
+/* .add-to-wishlist-icon:hover {
   color: rgba(224, 191, 3, 0.7);
-}
+} */
 
 .stock-title {
   font-size: 1.75rem;

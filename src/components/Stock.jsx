@@ -123,7 +123,9 @@ const Stock = ({ meta, values, toast }) => {
             className={`add-to-wishlist-icon ${
               isAddedToWishList ? "" : "wishlist-icon-active"
             }`}
-            style={{ color: isAddedToWishList ? "rgba(224, 191, 3, 0.7)" : "" }}
+            style={{
+              color: isAddedToWishList ? "rgba(224, 191, 3, 0.7)" : "grey",
+            }}
           />
         </div>
         <div className="stock-price">
