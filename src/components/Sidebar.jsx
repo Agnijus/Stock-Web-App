@@ -35,7 +35,6 @@ const Sidebar = () => {
               src={isDarkModeActive ? LogoWhite : LogoBlack}
               alt="Share Sight"
             />
-            {/* Share <span className="title-two">Sight</span> */}
           </h3>
 
           <IoClose

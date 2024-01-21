@@ -4,7 +4,7 @@ import {
   MarkerType,
   IgrCategoryXAxis,
 } from "igniteui-react-charts";
-import { useState, useEffect, memo } from "react";
+import { useState, useEffect, memo, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setTimePeriod,
@@ -40,6 +40,11 @@ const Stock = ({ meta, values, toast }) => {
     "Nov",
     "Dec",
   ];
+
+  const [, forceUpdate] = useState(0);
+  const forceRender = useCallback(() => {
+    forceUpdate((n) => n + 1);
+  }, []);
 
   useEffect(() => {
     dispatch(getWishList());
@@ -81,7 +86,7 @@ const Stock = ({ meta, values, toast }) => {
     dispatch(fetchStockData());
   };
 
-  const handleWishList = (symbol, exchange) => {
+  const handleWishList = (symbol, exchange, e) => {
     const currentlyAdded =
       wishList &&
       wishList.some(
@@ -89,11 +94,13 @@ const Stock = ({ meta, values, toast }) => {
       );
     dispatch(updateWishList({ symbol: symbol, exchange: exchange }));
     setIsAddedToWishList(!currentlyAdded);
+    forceRender();
     if (currentlyAdded) {
       toast("Removed from the Wishlist");
     } else {
       toast("Added to Wishlist");
     }
+    console.log(isAddedToWishList);
   };
 
   const startPrice = parseFloat(values[values.length - 1].close);
@@ -114,8 +121,9 @@ const Stock = ({ meta, values, toast }) => {
               handleWishList(meta.symbol, meta.exchange);
             }}
             className={`add-to-wishlist-icon ${
-              isAddedToWishList ? "wishlist-icon-active" : ""
+              isAddedToWishList ? "" : "wishlist-icon-active"
             }`}
+            style={{ color: isAddedToWishList ? "rgba(224, 191, 3, 0.7)" : "" }}
           />
         </div>
         <div className="stock-price">
