@@ -5,7 +5,7 @@ const initialState = {
   isManuallyClosed: false,
   isSearchActive: false,
   isSmallScreen: window.innerWidth <= 600,
-  isDarkModeActive: false,
+  isDarkModeActive: true,
 };
 
 const menuSlice = createSlice({

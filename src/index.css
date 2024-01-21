@@ -128,19 +128,10 @@ Sidebar
   padding: 1rem;
 }
 .logo {
-  margin-top: 0.25rem;
-  margin-left: -0.5rem;
+  margin-top: 1rem;
+  margin-left: -1rem;
   width: 170px;
   height: 40px;
-}
-.title {
-  font-size: 1.7rem;
-  color: #191919;
-  letter-spacing: 1px;
-  word-spacing: 1px;
-}
-.title-two {
-  color: grey;
 }
 
 .link {
@@ -887,7 +878,6 @@ Educational Page
 ===============
 */
 
-/* Educational Page */
 .educational-container {
   max-width: var(--large-screen-width);
   margin: auto;
