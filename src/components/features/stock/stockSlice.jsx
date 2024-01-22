@@ -6,6 +6,10 @@ const formatDate = (date) => {
   return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 };
 
+const setStartDate = (startDate, timePeriod) => {
+  startDate.setDate(startDate.getDate() - timePeriod);
+};
+
 export const fetchStockData = createAsyncThunk(
   "stock/fetchStockData",
   async (_, { getState }) => {
@@ -21,33 +25,27 @@ export const fetchStockData = createAsyncThunk(
 
     switch (stock.timeFrame) {
       case "1D":
-        const response = await customFetch.get(
-          `/time_series?symbol=${symbolExchange}&interval=${stock.interval}&date=${data.datetime}`
-        );
-        return response.data;
+        return await fetchDayOne(symbolExchange, stock, data);
       case "5D":
-        startDate.setDate(startDate.getDate() - 5);
+        setStartDate(startDate, 5);
         break;
       case "1M":
-        startDate.setDate(startDate.getDate() - 30);
+        setStartDate(startDate, 30);
         break;
       case "6M":
-        startDate.setDate(startDate.getDate() - 180);
+        setStartDate(startDate, 180);
         break;
       case "YTD":
         startDate.setMonth(0);
         startDate.setDate(1);
         break;
       case "1Y":
-        startDate.setDate(startDate.getDate() - 365);
+        setStartDate(startDate, 365);
         break;
     }
     startDate = formatDate(startDate);
 
-    const response = await customFetch.get(
-      `/time_series?symbol=${symbolExchange}&interval=${stock.interval}&start_date=${startDate}&end_date=${data.datetime}`
-    );
-    return response.data;
+    return await fetchSetDate(symbolExchange, stock, startDate, data);
   }
 );
 export const searchStocks = createAsyncThunk(
@@ -136,6 +134,7 @@ const initialState = {
   loading: false,
   error: null,
 };
+// call me nigga
 
 const stockSlice = createSlice({
   name: "stock",
@@ -234,3 +233,16 @@ export const {
 } = stockSlice.actions;
 
 export default stockSlice.reducer;
+
+async function fetchDayOne(symbolExchange, stock, data) {
+  const response = await customFetch.get(
+    `/time_series?symbol=${symbolExchange}&interval=${stock.interval}&date=${data.datetime}`
+  );
+  return await response.data;
+}
+async function fetchSetDate(symbolExchange, stock, startDate, data) {
+  const response = await customFetch.get(
+    `/time_series?symbol=${symbolExchange}&interval=${stock.interval}&start_date=${startDate}&end_date=${data.datetime}`
+  );
+  return response.data;
+}
