@@ -3,6 +3,7 @@ import Sidebar from "./Sidebar";
 import TopBar from "./TopBar";
 import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
+import React from "react";
 
 const MainLayout = () => {
   const { isSideBarOpened, isSearchActive, isDarkModeActive } = useSelector(

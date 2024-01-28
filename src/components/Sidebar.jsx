@@ -8,6 +8,7 @@ import { IoNewspaper } from "react-icons/io5";
 import { BiSolidGraduation } from "react-icons/bi";
 import LogoWhite from "../assets/logoWhite.png";
 import LogoBlack from "../assets/logoBlack.png";
+import React from "react";
 
 const Sidebar = () => {
   const dispatch = useDispatch();

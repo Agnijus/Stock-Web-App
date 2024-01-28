@@ -1,3 +1,4 @@
+import React from "react";
 import { BiSolidGraduation } from "react-icons/bi";
 import { TiStarFullOutline } from "react-icons/ti";
 import { IoIosSearch } from "react-icons/io";

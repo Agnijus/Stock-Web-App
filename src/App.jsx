@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import MainLayout from "./components/MainLayout";
-
+import React from "react";
 import HomePage from "./components/HomePage";
 import StockView from "./components/StockView";
 
@@ -32,8 +32,6 @@ function App() {
         autoClose="1000"
         hideProgressBar="true"
         toastStyle={{
-          // backgroundColor: isDarkModeActive ? "#3a3a3a" : "white",
-          // color: isDarkModeActive ? "white" : "grey",
           width: "260px",
           margin: "0 auto",
         }}

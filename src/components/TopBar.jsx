@@ -1,3 +1,4 @@
+import React from "react";
 import { CgMenuLeftAlt } from "react-icons/cg";
 import { MdModeNight } from "react-icons/md";
 import { IoIosSearch } from "react-icons/io";
