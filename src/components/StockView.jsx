@@ -54,6 +54,8 @@ const StockView = ({ toast }) => {
   if (error) {
     return <div>Error... {error}</div>;
   }
+
+  console.log(data);
   return (
     <section
       data-testid="stock-view-default"
