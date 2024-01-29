@@ -1,10 +1,12 @@
 import { useSelector } from "react-redux";
+import React from "react";
 
 const NotEnoughData = () => {
   const { isDarkModeActive } = useSelector((state) => state.menu);
 
   return (
     <div
+      data-testid="stock-view-default"
       className={`not-enough-data-container ${
         isDarkModeActive ? "not-enough-data-dark" : ""
       }  `}

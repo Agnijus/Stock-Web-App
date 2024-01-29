@@ -1,3 +1,4 @@
+import React from "react";
 import Stock from "./Stock";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -42,7 +43,10 @@ const StockView = ({ toast }) => {
     return <div>Error... {error}</div>;
   }
   return (
-    <section className="product-view-container">
+    <section
+      data-testid="stock-view-default"
+      className="product-view-container"
+    >
       <Stock {...data} toast={toast} />
     </section>
   );
