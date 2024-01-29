@@ -37,19 +37,17 @@ function App() {
         }}
         className={isDarkModeActive ? "toast-dark" : ""}
       />
-      <Router>
-        <Routes>
-          <Route path="/" element={<MainLayout />}>
-            <Route index element={<HomePage />} />
-            <Route path="/wishlist" element={<WishList toast={toast} />} />
-            <Route path="/educational" element={<Educational />} />
-            <Route
-              path="/stock/:symbol/:exchange"
-              element={<StockView toast={toast} />}
-            />
-          </Route>
-        </Routes>
-      </Router>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="/wishlist" element={<WishList toast={toast} />} />
+          <Route path="/educational" element={<Educational />} />
+          <Route
+            path="/stock/:symbol/:exchange"
+            element={<StockView toast={toast} />}
+          />
+        </Route>
+      </Routes>
     </>
   );
 }

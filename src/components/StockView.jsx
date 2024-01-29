@@ -13,7 +13,6 @@ import { SyncLoader } from "react-spinners";
 const StockView = ({ toast }) => {
   const dispatch = useDispatch();
   const { data, loading, error } = useSelector((state) => state.stock);
-  const { isDarkModeActive } = useSelector((state) => state.menu);
 
   const { symbol, exchange } = useParams();
 

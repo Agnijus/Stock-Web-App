@@ -4,6 +4,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import stockReducer from "../features/stock/stockSlice";
 import menuReducer from "../features/menu/menuSlice";
+import { MemoryRouter } from "react-router-dom"; // Import MemoryRouter
 
 function render(
   ui,
@@ -17,7 +18,12 @@ function render(
   } = {}
 ) {
   function Wrapper({ children }) {
-    return <Provider store={store}>{children}</Provider>;
+    return (
+      <Provider store={store}>
+        {/* Wrap your components with MemoryRouter */}
+        <MemoryRouter>{children}</MemoryRouter>
+      </Provider>
+    );
   }
 
   return rtlRender(ui, { wrapper: Wrapper, ...renderOptions });
