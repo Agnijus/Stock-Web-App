@@ -8,12 +8,12 @@ import {
   setTimePeriod,
   fetchStockData,
 } from "./features/stock/stockSlice";
-import NotEnoughData from "./NotEnoughData";
 import { SyncLoader } from "react-spinners";
 
 const StockView = ({ toast }) => {
   const dispatch = useDispatch();
   const { data, loading, error } = useSelector((state) => state.stock);
+  const { isDarkModeActive } = useSelector((state) => state.menu);
 
   const { symbol, exchange } = useParams();
 
@@ -36,7 +36,19 @@ const StockView = ({ toast }) => {
     !data.values ||
     data.values.length <= 1
   ) {
-    return <NotEnoughData />;
+    return (
+      <div
+        data-testid="stock-view-default"
+        className={`not-enough-data-container ${
+          isDarkModeActive ? "not-enough-data-dark" : ""
+        }  `}
+      >
+        <div className={`not-enough-data-container-center`}>
+          No recent trading data available for this stock at the moment. Please
+          try again later or choose a different stock.
+        </div>
+      </div>
+    );
   }
 
   if (error) {
