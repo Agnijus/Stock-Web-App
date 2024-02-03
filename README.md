@@ -2,9 +2,14 @@
 
 ## About The Project
 
-![Share Sight Screen Shot](https://stock-web-app.netlify.app/path_to_your_image.png)
+
+<img src="https://github.com/Agnijus/Stock-Web-App/blob/main/share-sight.PNG" alt="Share Sight Screen Shot" width="600"/>
+
 
 Share Sight is a comprehensive web application designed for stock market tracking and analysis, offering a user-friendly platform to monitor stock performance, featuring real-time data and interactive charting tools.
+
+[View Demo](https://stock-web-app.netlify.app/)
+
 
 ### Built With
 
