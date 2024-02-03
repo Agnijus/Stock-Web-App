@@ -1,12 +1,28 @@
-<<<<<<< HEAD
-# React + Vite
+# Share Sight
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## About The Project
 
-Currently, two official plugins are available:
+![Share Sight Screen Shot](https://stock-web-app.netlify.app/path_to_your_image.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-=======
-# Stock-Web-App
->>>>>>> 7bfc2995968acc654cf5c51a2cf25bf0814cfe85
+Share Sight is a comprehensive web application designed for stock market tracking and analysis, offering a user-friendly platform to monitor stock performance, featuring real-time data and interactive charting tools.
+
+### Built With
+
+* [React](https://reactjs.org/)
+* [Redux Toolkit](https://redux-toolkit.js.org/)
+* [React Router](https://reactrouter.com/)
+* [Axios](https://axios-http.com/)
+* [igniteui-react-charts](https://www.infragistics.com/products/ignite-ui-react/react/components/general-getting-started))
+* [Netlify Functions](https://www.netlify.com/products/functions/)
+* [Lodash](https://lodash.com/)
+* [Vitest/Jest (Testing - In Development)](https://vitest.dev/)
+
+## Usage
+
+Use Share Sight to:
+* Track and analyze stock prices in real-time.
+* Customize and manage your personal watchlist.
+* Explore stocks using the advanced search feature.
+* Utilize interactive charts to understand market trends over various timeframes.
+
+
