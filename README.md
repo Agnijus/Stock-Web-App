@@ -30,4 +30,10 @@ Use Share Sight to:
 * Explore stocks using the advanced search feature.
 * Utilize interactive charts to understand market trends over various timeframes.
 
+## Acknowledgments
+
+* Thanks to [Twelve Data](https://twelvedata.com/) for providing financial data through their API.
+* Shoutout to [Netlify](https://www.netlify.com/) for making deployment a breeze with their hosting and serverless backend functions.
+* Appreciation for [react-toastify](https://fkhadra.github.io/react-toastify/introduction) for enhancing the user experience with toast notifications.
+* Gratitude to [react-icons](https://react-icons.github.io/react-icons/) for their extensive library of icons that improve UI design.
 
