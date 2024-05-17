@@ -80,46 +80,6 @@ export const fetchHomePageStockData = createAsyncThunk(
   }
 );
 
-// export const updateStocks = createAsyncThunk(
-//   "stock/updateStocks",
-//   async (_, { getState }) => {
-//     try {
-//       // Fetch the stock data
-//       const { data } = await customFetch.get(`/stocks?show_plan=true`);
-
-//       // Filter stocks with plan "Basic"
-//       const basicPlanStocks = data.data
-//         .filter((item) => item.access && item.access.plan === "Basic")
-//         .map(({ access, ...rest }) => rest);
-
-//       console.log(basicPlanStocks);
-
-//       const sendBatch = async (batch) => {
-//         try {
-//           const response = await axios.post(
-//             "/.netlify/functions/updateStocks",
-//             JSON.stringify(batch)
-//           );
-//           return response.data;
-//         } catch (error) {
-//           console.error("Error sending batch: ", error);
-//           throw error;
-//         }
-//       };
-
-//       const batchSize = 250;
-
-//       for (let i = 0; i < basicPlanStocks.length; i += batchSize) {
-//         const batch = basicPlanStocks.slice(i, i + batchSize);
-//         await sendBatch(batch);
-//         console.log(`Batch index ${i}:`);
-//       }
-//       console.log("All batches inserted");
-//     } catch (error) {
-//       console.error("Error inserting batch: ", error);
-//     }
-//   }
-// );
 
 const initialState = {
   symbol: "",
@@ -134,7 +94,7 @@ const initialState = {
   loading: false,
   error: null,
 };
-// call me nigga
+
 
 const stockSlice = createSlice({
   name: "stock",
